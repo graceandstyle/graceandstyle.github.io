@@ -1,0 +1,134 @@
+﻿* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
+
+    *:focus {
+        outline: none;
+    }
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #CCC;
+    font-weight: normal;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #CCC;
+    opacity: 1;
+    font-weight: normal;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #CCC;
+    opacity: 1;
+    font-weight: normal;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #CCC;
+    font-weight: normal;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #CCC;
+    font-weight: normal;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+    color: #CCC;
+    font-weight: normal;
+}
+
+html, body {
+    background-color: #EEE;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+}
+
+span, button, div {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.main {
+    background-color:#FFF;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    width: 100%;
+}
+
+@media (min-width: 1921px) {
+    .main {
+        border-radius: 15px;
+        box-shadow: 0 0 5px 5px rgba(0,0,0,0.10);
+        height: 1080px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        width: 1920px;
+    }
+}
+
+.addshadow {
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+}
+
+.addtooltip {
+}
+
+    .addtooltip > .tooltip {
+        background-color: #343434;
+        border-radius: 3px;
+        color: #FFF;
+        cursor: default;
+        display: none;
+        font-size: 10pt;
+        left: 50%;
+        padding: 10px;
+        position: absolute;
+        top: -100%;
+        -webkit-text-fill-color: #FFF;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+
+    .addtooltip:hover > .tooltip {
+        display: block;
+    }
+
+    .addtooltip > .tooltip > span {
+        z-index: 1;
+    }
+
+    .addtooltip > .tooltip > div {
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #343434;
+        height: 0;
+        left: 50%;
+        position: absolute;
+        top: 100%;
+        -webkit-transform: translate(-50%, -30%);
+        -moz-transform: translateX(-50%, -30%);
+        -o-transform: translateX(-50%, -30%);
+        transform: translateX(-50%, -30%);
+        width: 0;
+    }
