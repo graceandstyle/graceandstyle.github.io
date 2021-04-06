@@ -17,6 +17,7 @@ var xhr;
 
 const appEvents = {
     'blur': 'blur',
+    'change':'change',
     'click': 'click',
     'dragover':'dragover',
     'drop':'drop',

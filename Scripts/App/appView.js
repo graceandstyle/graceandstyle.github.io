@@ -9,6 +9,10 @@ function initializeLogo() {
     $(logo).attr('src', logURI);
 }
 
+function initializeProductListPanel() {
+    productListPanel = initializeElement(htmlSection, productListPanel, [appClassNames.productListPanel], mainDiv);
+}
+
 function initializeCategoryPanel() {
     categoryPanel = initializeElement(htmlSection, categoryPanel, [appClassNames.categoryPanel], mainDiv);
     categoryItemHolder = initializeElement(htmlDiv, categoryItemHolder, null, categoryPanel);

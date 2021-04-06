@@ -8,6 +8,8 @@ const htmlHeader = $('<header></header>');
 const htmlImg = $('<img />');
 const htmlInputFile = $('<input type="file" name="files[]" multiple />');
 const htmlInputText = $('<input type="text" />');
+const htmlOption = $('<option></option>');
 const htmlParagraph = $('<p></p>');
 const htmlSection = $('<section></section>');
+const htmlSelect = $('<select></select>');
 const htmlSpan = $('<span></span>');

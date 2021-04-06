@@ -1,4 +1,13 @@
 var categoryItem;
+var categoryOption;
+var categorySelect;
+var productListItem;
+var thumbDetailsHolder;
+var thumbImg;
+var thumbImgHolder;
+var thumbName;
+var thumbPrice;
+
 const dataCategoryName = 'categoryname';
 
 var products = [
