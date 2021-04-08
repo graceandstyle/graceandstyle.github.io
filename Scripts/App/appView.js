@@ -6,7 +6,7 @@
 
 function initializeLogo() {
     logo = initializeElement(htmlImg, logo, [appClassNames.logo], mainDiv);
-    $(logo).attr('src', logURI);
+    $(logo).attr('src', logoURI);
 }
 
 function initializeProductListPanel() {
@@ -16,4 +16,8 @@ function initializeProductListPanel() {
 function initializeCategoryPanel() {
     categoryPanel = initializeElement(htmlSection, categoryPanel, [appClassNames.categoryPanel], mainDiv);
     categoryItemHolder = initializeElement(htmlDiv, categoryItemHolder, null, categoryPanel);
+}
+
+function initializeItemPanel() {
+    itemPanel = initializeElement(htmlSection, itemPanel, [appClassNames.itemPanel], mainDiv);
 }

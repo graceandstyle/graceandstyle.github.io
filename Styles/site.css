@@ -116,6 +116,7 @@ span, button, div {
 
     .addtooltip > .tooltip > span {
         z-index: 1;
+        white-space:nowrap;
     }
 
     .addtooltip > .tooltip > div {

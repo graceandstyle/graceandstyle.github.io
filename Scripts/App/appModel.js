@@ -2,10 +2,15 @@
 var backgroundPanel;
 var categoryItemHolder;
 var categoryPanel;
+var color;
+var colorBox;
+var colorPanel;
+var itemPanel;
 var logo;
 var productListPanel;
 
-const logURI = 'Content/Images/Favicons/Grace&Style.png';
+const tradeMarkName = 'GRACE &STYLE';
+const logoURI = 'Content/Images/Favicons/Grace&Style.png';
 
 const appClassNames = {
     'active':'active',
@@ -14,12 +19,20 @@ const appClassNames = {
     'backgroundEllipseTopRight':'backgroundellipsetopright',
     'backgroundPanel': 'backgroundpanel',
     'categoryPanel': 'categorypanel',
+    'color':'color',
+    'colorBox':'colorbox',
+    'colorPanel':'colorpanel',
     'detailsHolder':'detailsholder',
-    'imgHolder':'imgholder',
+    'imgHolder': 'imgholder',
+    'imgHolderUnderlay': 'imgholderunderlay',
+    'itemName':'itemname',
+    'itemPanel': 'itempanel',
+    'itemPrice':'itemprice',
     'listItem':'listitem',
     'logo': 'logo',
     'name': 'name',
     'price':'price',
-    'productListPanel':'productlistpanel'
+    'productListPanel': 'productlistpanel',
+    'tradeMark':'trademark'
 }
 Object.freeze(appClassNames);

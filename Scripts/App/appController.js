@@ -3,6 +3,7 @@
     initializeLogo();
     initializeProductListPanel();
     initializeCategoryPanel();
+    initializeItemPanel();
 });
 
 function genericAjaxError(response) {

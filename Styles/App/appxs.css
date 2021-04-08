@@ -104,7 +104,7 @@
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%);
-        bottom: 30px;
+        bottom: 0;
         text-align: center;
         white-space: nowrap;
         width: 100%;
@@ -160,6 +160,10 @@
                 -o-transform: translateY(-50%);
                 transform: translateY(-50%);
             }
+
+        .productlistpanel > .listitem > .imgholderunderlay {
+            border-radius: 5px;
+        }
 
         .productlistpanel > .listitem > .detailsholder {
             display: none;
