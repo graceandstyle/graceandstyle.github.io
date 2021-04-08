@@ -45,6 +45,7 @@
         -o-animation: categoryHolderIn 1s forwards ease-in-out;
         animation: categoryHolderIn 1s forwards ease-in-out;
         overflow: unset;
+        min-height: 43px;
     }
 
         .categorypanel > select {
@@ -96,7 +97,6 @@
     .productlistpanel {
         position: absolute;
         z-index: 2;
-        width: auto;
         height: auto;
         left: 50%;
         -webkit-transform: translateX(-50%);
@@ -104,9 +104,13 @@
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%);
-        bottom: 50px;
+        bottom: 30px;
         text-align: center;
         white-space: nowrap;
+        width: 100%;
+        overflow-x: auto;
+        padding: 20px 0;
+        overflow-y: hidden;
     }
 
         .productlistpanel > .listitem {
@@ -140,7 +144,7 @@
             width: 100px;
             height: 100px;
             background-color: rgba(0,0,0,0.2);
-            border-radius: 5px 0 0 5px;
+            border-radius: 5px;
             display: inline-block;
             vertical-align: middle;
         }

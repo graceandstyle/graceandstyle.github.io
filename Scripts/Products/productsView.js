@@ -1,18 +1,26 @@
-function initializeCategories() {
+function initializeCategories(data) {
+    products = data;
     categorySelect = initializeElement(htmlSelect, categorySelect, null, categoryPanel);
 
     for (var i = 0; i < products.length; i++) {
         categoryItem = initializeElement(htmlSpan, categoryItem, i == 0 ? [appClassNames.active] : null, categoryItemHolder);
-        addObjectText(categoryItem, products[i].category);
-        addObjectAttribute(categoryItem, dataCategoryName, products[i].category);
+        addObjectText(categoryItem, products[i].DisplayValue);
+        addObjectAttribute(categoryItem, dataCategoryName, products[i].DisplayValue);
+
+        $(categoryItem).css({
+            '-webkit-animation-delay': (i * 0.1) + 's',
+            '-moz-animation-delay': (i * 0.1) + 's',
+            '-o-animation-delay': (i * 0.1) + 's',
+            'animation-delay': (i * 0.1) + 's'
+        });
 
         $(categoryItem).unbind(appEvents.click).on(appEvents.click, function () {
             selectCategory($(this));
         });
 
         categoryOption = initializeElement(htmlOption, categoryOption, null, categorySelect);
-        addObjectText(categoryOption, products[i].category);
-        $(categoryOption).val(products[i].category);
+        addObjectText(categoryOption, products[i].DisplayValue);
+        $(categoryOption).val(products[i].DisplayValue);
     }
 
     $(categorySelect).unbind(appEvents.change).on(appEvents.change, function () {
@@ -25,9 +33,8 @@ function initializeCategories() {
 
 function selectCategory(categoryItem) {
     var categoryName = $(categoryItem).attr(attributePrefix + dataCategoryName);
-    var queryResult = Enumerable.from(products).where(function (x) { return x.category == categoryName })
-        .select(function (x) { return x.items }).toArray();
-
+    var queryResult = Enumerable.from(products).where(function (x) { return x.DisplayValue == categoryName })
+        .select(function (x) { return x.Items }).toArray();
     $(categoryItemHolder).children().removeClass(appClassNames.active);
     $(categoryItem).addClass(appClassNames.active);
 
@@ -45,12 +52,20 @@ function initializeItemThumbnail(queryResult) {
         thumbName = initializeElement(htmlSpan, thumbName, [appClassNames.name], thumbDetailsHolder);
         thumbPrice = initializeElement(htmlSpan, thumbPrice, [appClassNames.price], thumbDetailsHolder);
 
-        $(productListItem).css({
-            'background-color': queryResult[0][i].thimbnailhex
+        $(thumbImgHolder).css({
+            'background-color': queryResult[0][i].ThumbnailHex
         });
-        $(thumbImg).attr('src', queryResult[0][i].thumbnail);
 
-        addObjectText(thumbName, queryResult[0][i].name);
-        addObjectText(thumbPrice, queryResult[0][i].price);
+        $(productListItem).css({
+            '-webkit-animation-delay': (i * 0.1) + 's',
+            '-moz-animation-delay': (i * 0.1) + 's',
+            '-o-animation-delay': (i * 0.1) + 's',
+            'animation-delay': (i * 0.1) + 's'
+        });
+
+        $(thumbImg).attr('src', queryResult[0][i].Thumbnail);
+
+        addObjectText(thumbName, queryResult[0][i].DisplayValue);
+        addObjectText(thumbPrice, queryResult[0][i].Price);
     }
 }

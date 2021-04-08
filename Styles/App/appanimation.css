@@ -275,3 +275,23 @@
         transform: translateY(0%);
     }
 }
+
+@keyframes productIn {
+    0% {
+        opacity:0;
+        -webkit-transform: translate(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+    100% {
+        opacity: 0.5;
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
