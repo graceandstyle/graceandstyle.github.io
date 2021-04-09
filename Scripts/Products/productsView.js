@@ -1,6 +1,7 @@
 function initializeCategories(data) {
     products = data;
     categorySelect = initializeElement(htmlSelect, categorySelect, null, categoryPanel);
+    dropDownIcon = initializeElement(htmlDiv, dropDownIcon, ['fas fa-chevron-circle-down', appClassNames.dropDownIcon], categoryPanel);
 
     for (var i = 0; i < products.length; i++) {
         categoryItem = initializeElement(htmlSpan, categoryItem, i == 0 ? [appClassNames.active] : null, categoryItemHolder);
@@ -72,6 +73,8 @@ function initializeItemThumbnail(itemResult) {
         addObjectText(thumbPrice, itemResult[0][i].Price);
 
         addObjectAttribute(productListItem, dataItemId, itemResult[0][i].ItemID);
+        addObjectAttribute(productListItem, dataItemName, itemResult[0][i].DisplayValue);
+        addObjectAttribute(productListItem, dataItemPrice, itemResult[0][i].Price);
 
         $(productListItem).unbind(appEvents.click).on(appEvents.click, function () {
             selectItem($(this), itemResult[0]);
@@ -83,16 +86,19 @@ function initializeItemThumbnail(itemResult) {
 
 function selectItem(selectedItem, itemResult) {
     var itemId = $(selectedItem).attr(attributePrefix + dataItemId);
+    var itemName = $(selectedItem).attr(attributePrefix + dataItemName);
+    var itemPrice = $(selectedItem).attr(attributePrefix + dataItemPrice);
+
     var variationResult = Enumerable.from(itemResult).where(function (x) { return x.ItemID == itemId })
         .select(function (x) { return x.Variations }).toArray();
 
     $(productListPanel).children().removeClass(appClassNames.active);
     $(selectedItem).addClass(appClassNames.active);
 
-    initializeSelectedItem(variationResult, itemResult);
+    initializeSelectedItem(variationResult, itemName, itemPrice);
 }
 
-function initializeSelectedItem(variationResult, itemResult) {
+function initializeSelectedItem(variationResult, displayName, displayPrice) {
     $(itemPanel).children().remove();
 
     itemImgHolder = initializeElement(htmlDiv, itemImgHolder, [appClassNames.imgHolder], itemPanel);
@@ -104,8 +110,8 @@ function initializeSelectedItem(variationResult, itemResult) {
     itemPrice = initializeElement(htmlSpan, itemPrice, [appClassNames.itemPrice], itemDetailsHolder);
 
     addObjectText(tradeMark, tradeMarkName);
-    addObjectText(itemName, itemResult[0].DisplayValue);
-    addObjectText(itemPrice, itemResult[0].Price);
+    addObjectText(itemName, displayName);
+    addObjectText(itemPrice, displayPrice);
 
     for (var i = 0; i < variationResult[0].length; i++) {
         colorBox = initializeElement(htmlDiv, colorBox, i == 0 ? [appClassNames.colorBox, appClassNames.active] : [appClassNames.colorBox], colorPanel, false, variationResult[0][i].DisplayValue);
@@ -114,15 +120,31 @@ function initializeSelectedItem(variationResult, itemResult) {
         addObjectAttribute(colorBox, dataVariationID, variationResult[0][i].VariationID);
         addObjectAttribute(colorBox, dataImageURI, variationResult[0][i].Image);
 
+        $(colorBox).css({
+            '-webkit-animation-delay': (i * 0.1) + 's',
+            '-moz-animation-delay': (i * 0.1) + 's',
+            '-o-animation-delay': (i * 0.1) + 's',
+            'animation-delay': (i * 0.1) + 's'
+        });
+
         $(color).css({
             'background-color': variationResult[0][i].Hex
         });
 
         $(colorBox).unbind(appEvents.click).on(appEvents.click, function () {
-
-            $(colorPanel).children().removeClass(appClassNames.active);
-            $(this).addClass(appClassNames.active);
-            $(itemImg).attr('src', $(this).attr(attributePrefix + dataImageURI));
+            if ($(itemImg).attr('src') != $(this).attr(attributePrefix + dataImageURI)) {
+                $(colorPanel).children().removeClass(appClassNames.active);
+                $(this).addClass(appClassNames.active);
+                $(itemImg).css({
+                    '-opacity': '0'
+                });
+                $(itemImg).attr('src', $(this).attr(attributePrefix + dataImageURI));
+                $(itemImg).on('load', function () {
+                    $(itemImg).css({
+                        '-opacity': '1'
+                    });
+                });
+            }
         });
     }
 

@@ -40,7 +40,7 @@
 }
 
 html, body {
-    background-color: #EEE;
+    background-color: #EEE !important;
     height: 100%;
     margin: 0;
     padding: 0;
