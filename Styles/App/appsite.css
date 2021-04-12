@@ -1,9 +1,11 @@
 ﻿.backgroundpanel {
     height: 100%;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     width: 100%;
     z-index: 0;
+    top:0;
+    left:0;
 }
     .backgroundpanel > .backgroundellipse {
         background-color: rgba(230,201,42,0.1);
@@ -128,9 +130,9 @@
     bottom: 0;
     text-align: center;
     white-space: nowrap;
-    width: 100%;
+    width: calc(100% - 100px);
     overflow-x: auto;
-    padding: 20px 0;
+    padding: 20px 50px;
     overflow-y: hidden;
 }
 
@@ -287,8 +289,24 @@
         z-index: 0;
     }
 
+        .itempanel > .imgholder > div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            font-size: 20pt;
+            color: #343434;
+            display: none;
+            z-index: 1;
+        }
+
         .itempanel > .imgholder > img {
             height: 100%;
+            z-index:0;
         }
 
     .itempanel > .colorpanel {
@@ -356,3 +374,57 @@
         .itempanel > .colorpanel > .active {
             opacity: 1;
         }
+
+    .itempanel > .addtocartbtn {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        background: none;
+        padding: 10px 20px;
+        border: 2px solid #343434;
+        border-radius: 20px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+        .itempanel > .addtocartbtn:hover {
+            color: #e6c92a;
+            border: 2px solid #e6c92a;
+        }
+
+        .itempanel > .addtocartbtn > .primaryicon {
+            margin-right: 5px;
+        }
+
+.shoppingbagiconpanel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #FFF;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+    .shoppingbagiconpanel > .shopicon {
+        font-size: 20pt;
+        color: #343434;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+    }

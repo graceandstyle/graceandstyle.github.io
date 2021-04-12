@@ -36,12 +36,15 @@ function initializeCategories(data) {
 
 function selectCategory(categoryItem) {
     var categoryId = $(categoryItem).attr(attributePrefix + dataCategoryId);
-    var itemResult = Enumerable.from(products).where(function (x) { return x.CategoryID == categoryId })
-        .select(function (x) { return x.Items }).toArray();
-    $(categoryItemHolder).children().removeClass(appClassNames.active);
-    $(categoryItem).addClass(appClassNames.active);
+    if (currentSelectedCategory != categoryId) {
+        currentSelectedCategory = categoryId;
+        var itemResult = Enumerable.from(products).where(function (x) { return x.CategoryID == categoryId })
+            .select(function (x) { return x.Items }).toArray();
+        $(categoryItemHolder).children().removeClass(appClassNames.active);
+        $(categoryItem).addClass(appClassNames.active);
 
-    initializeItemThumbnail(itemResult);
+        initializeItemThumbnail(itemResult);
+    }
 }
 
 function initializeItemThumbnail(itemResult) {
@@ -86,32 +89,43 @@ function initializeItemThumbnail(itemResult) {
 
 function selectItem(selectedItem, itemResult) {
     var itemId = $(selectedItem).attr(attributePrefix + dataItemId);
-    var itemName = $(selectedItem).attr(attributePrefix + dataItemName);
-    var itemPrice = $(selectedItem).attr(attributePrefix + dataItemPrice);
+    if (currentSelectedItem != itemId) {
+        currentSelectedItem = itemId;
+        var itemName = $(selectedItem).attr(attributePrefix + dataItemName);
+        var itemPrice = $(selectedItem).attr(attributePrefix + dataItemPrice);
 
-    var variationResult = Enumerable.from(itemResult).where(function (x) { return x.ItemID == itemId })
-        .select(function (x) { return x.Variations }).toArray();
+        var variationResult = Enumerable.from(itemResult).where(function (x) { return x.ItemID == itemId })
+            .select(function (x) { return x.Variations }).toArray();
 
-    $(productListPanel).children().removeClass(appClassNames.active);
-    $(selectedItem).addClass(appClassNames.active);
+        $(productListPanel).children().removeClass(appClassNames.active);
+        $(selectedItem).addClass(appClassNames.active);
 
-    initializeSelectedItem(variationResult, itemName, itemPrice);
+        initializeSelectedItem(variationResult, itemName, itemPrice);
+    }
 }
 
 function initializeSelectedItem(variationResult, displayName, displayPrice) {
     $(itemPanel).children().remove();
 
     itemImgHolder = initializeElement(htmlDiv, itemImgHolder, [appClassNames.imgHolder], itemPanel);
+    itemImgLoader = initializeElement(htmlDiv, itemImgLoader, ['fas fa-spinner fa-spin'], itemImgHolder);
     itemImg = initializeElement(htmlImg, itemImg, null, itemImgHolder);
+
     colorPanel = initializeElement(htmlDiv, colorPanel, [appClassNames.colorPanel], itemPanel);
+
     itemDetailsHolder = initializeElement(htmlDiv, itemDetailsHolder, [appClassNames.detailsHolder], itemPanel);
     tradeMark = initializeElement(htmlSpan, tradeMark, [appClassNames.tradeMark], itemDetailsHolder);
     itemName = initializeElement(htmlSpan, itemName, [appClassNames.itemName], itemDetailsHolder);
     itemPrice = initializeElement(htmlSpan, itemPrice, [appClassNames.itemPrice], itemDetailsHolder);
 
+    addToCartBtn = initializeElement(htmlButton, addToCartBtn, [appClassNames.addToCartBtn], itemPanel);
+    addToCartBtnPrimaryIcon = initializeElement(htmlDiv, addToCartBtnPrimaryIcon, ['fas fa-plus', appClassNames.primaryIcon], addToCartBtn);
+    addToCartBtnText = initializeElement(htmlSpan, addToCartBtnText, null, addToCartBtn);
+
     addObjectText(tradeMark, tradeMarkName);
     addObjectText(itemName, displayName);
     addObjectText(itemPrice, displayPrice);
+    addObjectText(addToCartBtnText, productTexts.addToCart);
 
     for (var i = 0; i < variationResult[0].length; i++) {
         colorBox = initializeElement(htmlDiv, colorBox, i == 0 ? [appClassNames.colorBox, appClassNames.active] : [appClassNames.colorBox], colorPanel, false, variationResult[0][i].DisplayValue);
@@ -132,17 +146,26 @@ function initializeSelectedItem(variationResult, displayName, displayPrice) {
         });
 
         $(colorBox).unbind(appEvents.click).on(appEvents.click, function () {
-            if ($(itemImg).attr('src') != $(this).attr(attributePrefix + dataImageURI)) {
+            if (currentSelectedVariation != $(this).attr(attributePrefix + dataVariationID)) {
+                currentSelectedVariation = $(this).attr(attributePrefix + dataVariationID);
                 $(colorPanel).children().removeClass(appClassNames.active);
                 $(this).addClass(appClassNames.active);
                 $(itemImg).css({
                     '-opacity': '0'
                 });
+                $(itemImgLoader).css({
+                    'display':'block'
+                });
                 $(itemImg).attr('src', $(this).attr(attributePrefix + dataImageURI));
                 $(itemImg).on('load', function () {
-                    $(itemImg).css({
-                        '-opacity': '1'
-                    });
+                    setTimeout(function () {
+                        $(itemImg).css({
+                            '-opacity': '1'
+                        });
+                        $(itemImgLoader).css({
+                            'display': ''
+                        });
+                    }, 100);
                 });
             }
         });

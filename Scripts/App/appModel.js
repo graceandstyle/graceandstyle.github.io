@@ -8,12 +8,15 @@ var colorPanel;
 var itemPanel;
 var logo;
 var productListPanel;
+var shopIcon;
+var shoppingBagIconPanel;
 
 const tradeMarkName = 'GRACE &STYLE';
 const logoURI = 'Content/Images/Favicons/Grace&Style.png';
 
 const appClassNames = {
-    'active':'active',
+    'active': 'active',
+    'addToCartBtn':'addtocartbtn',
     'backgroundEllipse': 'backgroundellipse',
     'backgroundEllipseBottomLeft': 'backgroundellipsebottomleft',
     'backgroundEllipseTopRight':'backgroundellipsetopright',
@@ -32,8 +35,11 @@ const appClassNames = {
     'listItem':'listitem',
     'logo': 'logo',
     'name': 'name',
-    'price':'price',
+    'price': 'price',
+    'primaryIcon':'primaryicon',
     'productListPanel': 'productlistpanel',
+    'shopIcon':'shopicon',
+    'shoppingBagIconPanel':'shoppingbagiconpanel',
     'tradeMark':'trademark'
 }
 Object.freeze(appClassNames);

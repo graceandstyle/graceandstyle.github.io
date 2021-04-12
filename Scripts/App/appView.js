@@ -21,3 +21,8 @@ function initializeCategoryPanel() {
 function initializeItemPanel() {
     itemPanel = initializeElement(htmlSection, itemPanel, [appClassNames.itemPanel], mainDiv);
 }
+
+function initializeShoppingBagIcon() {
+    shoppingBagIconPanel = initializeElement(htmlSection, shoppingBagIconPanel, [appClassNames.shoppingBagIconPanel], mainDiv);
+    shopIcon = initializeElement(htmlDiv, shopIcon, ['fas fa-shopping-bag', appClassNames.shopIcon], shoppingBagIconPanel);
+}

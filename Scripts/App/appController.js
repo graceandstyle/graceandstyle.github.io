@@ -1,9 +1,10 @@
 ﻿$(document).ready(() => {
     initializeBackground();
     initializeLogo();
-    initializeProductListPanel();
     initializeCategoryPanel();
     initializeItemPanel();
+    initializeProductListPanel();
+    initializeShoppingBagIcon();
 });
 
 function genericAjaxError(response) {

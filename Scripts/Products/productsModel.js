@@ -1,10 +1,17 @@
+var addToCartBtn;
+var addToCartBtnText;
+var addToCartBtnPrimaryIcon;
 var categoryItem;
 var categoryOption;
 var categorySelect;
+var currentSelectedCategory;
+var currentSelectedItem;
+var currentSelectedVariation;
 var dropDownIcon;
 var itemDetailsHolder;
 var itemImg;
 var itemImgHolder;
+var itemImgLoader;
 var itemName;
 var itemPrice;
 var tradeMark;
@@ -29,3 +36,8 @@ const productAPIExtensions = {
     'getProducts': 'GetProducts',
 }
 Object.freeze(productAPIExtensions);
+
+const productTexts = {
+    'addToCart': 'ADD TO CART',
+}
+Object.freeze(productTexts);
