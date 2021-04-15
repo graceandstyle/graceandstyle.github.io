@@ -386,18 +386,19 @@
         transform: translateX(-50%);
         background: none;
         padding: 10px 20px;
-        border: 2px solid #343434;
+        border: 2px solid #e6c92a;
         border-radius: 20px;
         text-align: center;
         vertical-align: middle;
         cursor: pointer;
         font-weight: bold;
+        -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+        -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+        -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+        animation: backgroundpanelfaidein 1s forwards ease-in-out;
+        color: #FFF;
+        background-color: #e6c92a;
     }
-
-        .itempanel > .addtocartbtn:hover {
-            color: #e6c92a;
-            border: 2px solid #e6c92a;
-        }
 
         .itempanel > .addtocartbtn > .primaryicon {
             margin-right: 5px;
@@ -428,3 +429,122 @@
         -o-transform: translate(-50%,-50%);
         transform: translate(-50%,-50%);
     }
+
+.addtocartpanel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    -webkit-animation: backgroundpanelfaidein 0.5s forwards ease-in-out;
+    -moz-animation: backgroundpanelfaidein 0.5s forwards ease-in-out;
+    -o-animation: backgroundpanelfaidein 0.5s forwards ease-in-out;
+    animation: backgroundpanelfaidein 0.5s forwards ease-in-out;
+}
+
+    .addtocartpanel > .addtocartbox {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        width: calc(100% - 40px);
+        height: auto;
+        background-color: #FFF;
+        padding: 40px 20px;
+        box-shadow: 0 0 5px 5px rgb(0 0 0 / 10%);
+        max-width: 360px;
+        border-radius: 10px 10px 0 0;
+        -webkit-animation: addToCartBoxIn 0.5s forwards ease-in-out;
+        -moz-animation: addToCartBoxIn 0.5s forwards ease-in-out;
+        -o-animation: addToCartBoxIn 0.5s forwards ease-in-out;
+        animation: addToCartBoxIn 0.5s forwards ease-in-out;
+    }
+
+        .addtocartpanel > .addtocartbox > .detailsection {
+            position: relative;
+            display: block;
+            white-space: nowrap;
+            border-bottom: 1px solid #343434;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+            .addtocartpanel > .addtocartbox > .detailsection > .detailsholder {
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+                width: calc(100% - 100px);
+                height: auto;
+                z-index: 1;
+            }
+
+                .addtocartpanel > .addtocartbox > .detailsection > .detailsholder > span {
+                    white-space: nowrap;
+                    display: block;
+                }
+
+                .addtocartpanel > .addtocartbox > .detailsection > .detailsholder > .trademark {
+                    font-size: 10pt;
+                }
+
+                .addtocartpanel > .addtocartbox > .detailsection > .detailsholder > .itemname {
+                    font-size: 15pt;
+                    font-weight: bold;
+                }
+
+                .addtocartpanel > .addtocartbox > .detailsection > .detailsholder > .itemprice {
+                    font-size: 15pt;
+                    color: #e6c92a;
+                }
+
+            .addtocartpanel > .addtocartbox > .detailsection > .imgholderunderlay {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                border-radius: 5px;
+                display: inline-block;
+                vertical-align: top;
+                z-index: 1;
+            }
+
+                .addtocartpanel > .addtocartbox > .detailsection > .imgholderunderlay > .imgholder {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.2);
+                }
+
+                    .addtocartpanel > .addtocartbox > .detailsection > .imgholderunderlay > .imgholder > img {
+                        height: 70%;
+                        position: absolute;
+                        left: -30%;
+                        top: 50%;
+                        -webkit-transform: translateY(-50%);
+                        -moz-transform: translateY(-50%);
+                        -ms-transform: translateY(-50%);
+                        -o-transform: translateY(-50%);
+                        transform: translateY(-50%);
+                    }
+
+        .addtocartpanel > .addtocartbox > .sizelabel {
+            font-size: 12pt;
+            display: block;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .addtocartpanel > .addtocartbox > .sizeholder {
+            position: relative;
+            display: block;
+            width: 100%;
+            white-space: nowrap;
+            padding: 10px 0;
+            height: auto;
+            overflow-x: auto;
+        }

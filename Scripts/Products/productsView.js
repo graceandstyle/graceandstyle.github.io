@@ -133,6 +133,7 @@ function initializeSelectedItem(variationResult, displayName, displayPrice) {
 
         addObjectAttribute(colorBox, dataVariationID, variationResult[0][i].VariationID);
         addObjectAttribute(colorBox, dataImageURI, variationResult[0][i].Image);
+        addObjectAttribute(colorBox, dataItemColor, variationResult[0][i].Hex);
 
         $(colorBox).css({
             '-webkit-animation-delay': (i * 0.1) + 's',
@@ -146,8 +147,12 @@ function initializeSelectedItem(variationResult, displayName, displayPrice) {
         });
 
         $(colorBox).unbind(appEvents.click).on(appEvents.click, function () {
-            if (currentSelectedVariation != $(this).attr(attributePrefix + dataVariationID)) {
-                currentSelectedVariation = $(this).attr(attributePrefix + dataVariationID);
+            if (currentSelectedVariationID != $(this).attr(attributePrefix + dataVariationID)) {
+
+                currentSelectedImg = $(this).attr(attributePrefix + dataImageURI);
+                currentSelectedColor = $(this).attr(attributePrefix + dataItemColor);
+                currentSelectedVariationID = $(this).attr(attributePrefix + dataVariationID);
+
                 $(colorPanel).children().removeClass(appClassNames.active);
                 $(this).addClass(appClassNames.active);
                 $(itemImg).css({
@@ -171,5 +176,36 @@ function initializeSelectedItem(variationResult, displayName, displayPrice) {
         });
     }
 
+    $(addToCartBtn).unbind(appEvents.click).on(appEvents.click, function () {
+        sizesResult = Enumerable.from(variationResult[0]).where(function (x) { return x.VariationID == currentSelectedVariationID })
+            .select(function (x) { return x.Sizes }).toArray();
+        initializeAddToCartPanel(sizesResult);
+    });
+
     $(colorPanel).children().eq(0).trigger(appEvents.click);
+}
+
+function initializeAddToCartPanel(SizesResult) {
+    addToCartPanel = initializeElement(htmlSection, addToCartPanel, [appClassNames.addToCartPanel], mainDiv);
+    addToCartBox = initializeElement(htmlDiv, addToCartBox, [appClassNames.addToCartBox], addToCartPanel);
+    detailSection = initializeElement(htmlDiv, detailSection, [appClassNames.detailSection], addToCartBox);
+
+    addToCartDetailsHolder = initializeElement(itemDetailsHolder, addToCartDetailsHolder, null, detailSection);
+
+    addToCartImgHolderUnderlay = initializeElement(htmlDiv, addToCartImgHolderUnderlay, [appClassNames.imgHolderUnderlay], detailSection);
+    addToCartImgholder = initializeElement(htmlDiv, addToCartImgholder, [appClassNames.imgHolder], addToCartImgHolderUnderlay);
+    addToCartImg = initializeElement(htmlImg, addToCartImg, null, addToCartImgholder);
+
+    sizeLabel = initializeElement(htmlSpan, sizeLabel, [appClassNames.sizeLabel], addToCartBox);
+    sizeHolder = initializeElement(htmlDiv, sizeHolder, [appClassNames.sizeHolder], addToCartBox);
+
+    addObjectText(sizeLabel, productTexts.sizes);
+
+    $(addToCartImg).attr('src', currentSelectedImg);
+
+    $(addToCartImgHolderUnderlay).css({
+        'background-color': currentSelectedColor
+    });
+
+    console.log(SizesResult);
 }
