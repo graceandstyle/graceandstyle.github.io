@@ -199,6 +199,21 @@ function initializeAddToCartPanel(SizesResult) {
     sizeLabel = initializeElement(htmlSpan, sizeLabel, [appClassNames.sizeLabel], addToCartBox);
     sizeHolder = initializeElement(htmlDiv, sizeHolder, [appClassNames.sizeHolder], addToCartBox);
 
+    dynamicItemHolder = initializeElement(htmlDiv, dynamicItemHolder, [appClassNames.dynamicQtyHolder], addToCartBox);
+
+    for (var i = 0; i < SizesResult[0].length; i++) {
+        sizeBtn = initializeElement(htmlButton, sizeBtn, [appClassNames.sizeBtn], sizeHolder);
+
+        addObjectAttribute(sizeBtn, dataSizeId, SizesResult[0][i].SizeID);
+        addObjectAttribute(sizeBtn, dataStock, SizesResult[0][i].Stock);
+
+        addObjectText(sizeBtn, SizesResult[0][i].DisplayValue);
+
+        $(sizeBtn).unbind(appEvents.click).on(appEvents.click, function () {
+            selectSize($(this));
+        });
+    }
+
     addObjectText(sizeLabel, productTexts.sizes);
 
     $(addToCartImg).attr('src', currentSelectedImg);
@@ -207,5 +222,24 @@ function initializeAddToCartPanel(SizesResult) {
         'background-color': currentSelectedColor
     });
 
-    console.log(SizesResult);
+    $(sizeHolder).children().eq(0).trigger(appEvents.click);
+}
+
+function selectSize(thisSizeBtn) {
+    $(sizeHolder).children().removeClass(appClassNames.active);
+    $(thisSizeBtn).addClass(appClassNames.active);
+
+    if (currentSelectedSizeID != $(thisSizeBtn).attr(attributePrefix + dataSizeId)) {
+        currentSelectedSizeID = $(thisSizeBtn).attr(attributePrefix + dataSizeId);
+        $(dynamicQtyHolder).children().remove();
+
+        if (parseInt($(thisSizeBtn).attr(attributePrefix + dataStock)) > 0) {
+            dynamicQtyHolder = initializeElement(htmlDiv, dynamicQtyHolder, null, dynamicItemHolder);
+            qtyLabel = initializeElement(htmlSpan, qtyLabel, [appClassNames.qtyLabel], dynamicQtyHolder);
+            stockTxt = initializeElement(htmlSpan, stockTxt, null, dynamicQtyHolder);
+
+            addObjectText(qtyLabel, productTexts.quantity);
+            addObjectText(stockTxt, productTexts.stock + ': ' + $(thisSizeBtn).attr(attributePrefix + dataStock));
+        }
+    }
 }

@@ -55,10 +55,19 @@
             height: auto;
             border: none;
             padding: 0;
-            transform: translateY(-50%);
             font-size: 15pt;
             z-index: 0;
             display: block;
+            opacity: 0;
+            -webkit-animation: categoryHolderIn 1s forwards ease-in-out;
+            -moz-animation: categoryHolderIn 1s forwards ease-in-out;
+            -o-animation: categoryHolderIn 1s forwards ease-in-out;
+            animation: categoryHolderIn 1s forwards ease-in-out;
+            -webkit-animation-delay: 0.5s;
+            -moz-animation-delay: 0.5s;
+            -moz-animation-delay: 0.5s;
+            -o-animation-delay: 0.5s;
+            animation-delay: 0.5s;
         }
 
         .categorypanel > select {
@@ -86,6 +95,7 @@
             -o-animation: categoryIn 1s forwards ease-in-out;
             animation: categoryIn 1s forwards ease-in-out;
             overflow: unset;
+            min-height: 23px !important;
         }
 
             .categorypanel > div > span {
@@ -339,7 +349,7 @@
 
         .itempanel > .addtocartbtn {
             position: relative;
-            width:calc(100% - 60px);
+            width: calc(100% - 60px);
             bottom: 0;
             left: 50%;
             -webkit-transform: translateX(-50%);
@@ -349,12 +359,18 @@
             transform: translateX(-50%);
             background: none;
             padding: 10px 20px;
-            border: 2px solid #343434;
             border-radius: 20px;
             text-align: center;
             vertical-align: middle;
             cursor: pointer;
             font-weight: bold;
+            -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+            -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+            -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+            animation: backgroundpanelfaidein 1s forwards ease-in-out;
+            border: 2px solid #e6c92a;
+            color: #FFF;
+            background-color: #e6c92a;
         }
 
             .itempanel > .addtocartbtn:hover {

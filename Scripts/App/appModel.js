@@ -8,9 +8,12 @@ var color;
 var colorBox;
 var colorPanel;
 var detailSection;
+var dynamicItemHolder;
+var dynamicQtyHolder;
 var itemPanel;
 var logo;
 var productListPanel;
+var qtyLabel;
 var shopIcon;
 var shoppingBagIconPanel;
 var sizeLabel;
@@ -33,8 +36,9 @@ const appClassNames = {
     'colorBox': 'colorbox',
     'colorPanel': 'colorpanel',
     'detailsHolder': 'detailsholder',
-    'detailSection':'detailsection',
-    'dropDownIcon':'dropdownicon',
+    'detailSection': 'detailsection',
+    'dropDownIcon': 'dropdownicon',
+    'dynamicQtyHolder':'dynamicqtyholder',
     'imgHolder': 'imgholder',
     'imgHolderUnderlay': 'imgholderunderlay',
     'itemName':'itemname',
@@ -46,8 +50,10 @@ const appClassNames = {
     'price': 'price',
     'primaryIcon':'primaryicon',
     'productListPanel': 'productlistpanel',
+    'qtyLabel':'qtylabel',
     'shopIcon':'shopicon',
     'shoppingBagIconPanel': 'shoppingbagiconpanel',
+    'sizeBtn':'sizebtn',
     'sizeLabel': 'sizelabel',
     'sizeHolder':'sizeholder',
     'tradeMark':'trademark'

@@ -19,6 +19,9 @@ var tradeMark;
 var productListItem;
 var products;
 var thumbDetailsHolder;
+var sizeBtn;
+var sizeBtnText;
+var stockTxt;
 var thumbImg;
 var thumbImgHolder;
 var thumbImgHolderUnderlay;
@@ -29,6 +32,7 @@ var currentSelectedCategory;
 var currentSelectedColor;
 var currentSelectedImg;
 var currentSelectedItem;
+var currentSelectedSizeID;
 var currentSelectedVariationID;
 
 const baseURI = 'http://pikarom.com/GraceNStyle/';
@@ -38,6 +42,8 @@ const dataItemId = 'itemid';
 const dataItemColor = 'itemcolor';
 const dataItemName = 'itemname';
 const dataItemPrice = 'itemprice';
+const dataSizeId = 'sizeid';
+const dataStock = 'stock'
 const dataVariationID = 'variationid';
 
 const productAPIExtensions = {
@@ -47,6 +53,8 @@ Object.freeze(productAPIExtensions);
 
 const productTexts = {
     'addToCart': 'ADD TO CART',
-    'sizes':'Sizes'
+    'quantity':'Quantity',
+    'sizes': 'Sizes',
+    'stock':'Stock'
 }
 Object.freeze(productTexts);

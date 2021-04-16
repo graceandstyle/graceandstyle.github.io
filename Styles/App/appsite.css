@@ -386,7 +386,6 @@
         transform: translateX(-50%);
         background: none;
         padding: 10px 20px;
-        border: 2px solid #e6c92a;
         border-radius: 20px;
         text-align: center;
         vertical-align: middle;
@@ -396,8 +395,10 @@
         -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
         -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
         animation: backgroundpanelfaidein 1s forwards ease-in-out;
+        border: 2px solid #e6c92a;
         color: #FFF;
         background-color: #e6c92a;
+        -webkit-appearance:none;
     }
 
         .itempanel > .addtocartbtn > .primaryicon {
@@ -548,3 +549,56 @@
             height: auto;
             overflow-x: auto;
         }
+
+            .addtocartpanel > .addtocartbox > .sizeholder > .sizebtn {
+                display: inline-block;
+                position: relative;
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                background-color: #EEE;
+                text-align: center;
+                vertical-align: middle;
+                cursor: pointer;
+                font-size: 15pt;
+                border:none;
+                -webkit-appearance:none;
+                margin-right:10px;
+            }
+
+            .addtocartpanel > .addtocartbox > .sizeholder > .sizebtn:last-child {
+                margin-right: unset;
+            }
+
+                .addtocartpanel > .addtocartbox > .sizeholder > .sizebtn:hover {
+                    background-color: #e6c92a;
+                    color: #FFF;
+                }
+
+            .addtocartpanel > .addtocartbox > .sizeholder > .active {
+                background-color: #e6c92a !important;
+                color: #FFF !important;
+            }
+
+        .addtocartpanel > .addtocartbox > .dynamicqtyholder {
+            display: block;
+            white-space: nowrap;
+            position: relative;
+        }
+
+            .addtocartpanel > .addtocartbox > .dynamicqtyholder > div {
+                display: block;
+                white-space: nowrap;
+                position: relative;
+            }
+
+                .addtocartpanel > .addtocartbox > .dynamicqtyholder > div > span {
+                    font-size: 10pt;
+                    display: block;
+                    white-space: nowrap;
+                    position: relative;
+                }
+
+                .addtocartpanel > .addtocartbox > .dynamicqtyholder > div > .qtylabel {
+                    font-size: 12pt;
+                }
