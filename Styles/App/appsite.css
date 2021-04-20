@@ -443,6 +443,7 @@
     -moz-animation: backgroundpanelfaidein 0.5s forwards ease-in-out;
     -o-animation: backgroundpanelfaidein 0.5s forwards ease-in-out;
     animation: backgroundpanelfaidein 0.5s forwards ease-in-out;
+    overflow:hidden;
 }
 
     .addtocartpanel > .addtocartbox {
@@ -580,25 +581,102 @@
                 color: #FFF !important;
             }
 
-        .addtocartpanel > .addtocartbox > .dynamicqtyholder {
+        .addtocartpanel > .addtocartbox > .dynamicitemholder {
             display: block;
             white-space: nowrap;
             position: relative;
         }
 
-            .addtocartpanel > .addtocartbox > .dynamicqtyholder > div {
+            .addtocartpanel > .addtocartbox > .dynamicitemholder > div {
                 display: block;
                 white-space: nowrap;
                 position: relative;
             }
 
-                .addtocartpanel > .addtocartbox > .dynamicqtyholder > div > span {
+                .addtocartpanel > .addtocartbox > .dynamicitemholder > div > span {
                     font-size: 10pt;
                     display: block;
                     white-space: nowrap;
                     position: relative;
                 }
 
-                .addtocartpanel > .addtocartbox > .dynamicqtyholder > div > .qtylabel {
+                .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtylabel {
                     font-size: 12pt;
                 }
+
+                .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    height: 40px;
+                    white-space: nowrap;
+                    padding: 10px 0;
+                }
+
+                    .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox > .minusbtn {
+                        position: relative;
+                        white-space: nowrap;
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 40px;
+                        height: 40px;
+                        background-color: #EEE;
+                        cursor: pointer;
+                    }
+
+                        .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox > .minusbtn > div {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            -webkit-transform: translate(-50%,-50%);
+                            -moz-transform: translate(-50%,-50%);
+                            -ms-transform: translate(-50%,-50%);
+                            -o-transform: translate(-50%,-50%);
+                            transform: translate(-50%,-50%);
+                            font-size: 15pt;
+                        }
+
+                        .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox > .minusbtn:hover, .minusbtn:active {
+                            background-color: #e6c92a;
+                            color: #FFF;
+                        }
+
+                    .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox > input {
+                        position: relative;
+                        width: calc(100% - 82px);
+                        height: calc(100% - 23px);
+                        padding: 10px 0;
+                        text-align: center;
+                        font-size: 16pt;
+                        display: inline-block;
+                        border: 1px solid #EEE;
+                        vertical-align: middle;
+                    }
+
+                    .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox > .plusbtn {
+                        position: relative;
+                        white-space: nowrap;
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 40px;
+                        height: 40px;
+                        background-color: #EEE;
+                        cursor: pointer;
+                    }
+
+                        .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox > .plusbtn > div {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            -webkit-transform: translate(-50%,-50%);
+                            -moz-transform: translate(-50%,-50%);
+                            -ms-transform: translate(-50%,-50%);
+                            -o-transform: translate(-50%,-50%);
+                            transform: translate(-50%,-50%);
+                            font-size: 15pt;
+                        }
+
+                        .addtocartpanel > .addtocartbox > .dynamicitemholder > div > .qtybox > .plusbtn:hover, .plusbtn:active {
+                            background-color: #e6c92a;
+                            color: #FFF;
+                        }

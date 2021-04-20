@@ -199,7 +199,7 @@ function initializeAddToCartPanel(SizesResult) {
     sizeLabel = initializeElement(htmlSpan, sizeLabel, [appClassNames.sizeLabel], addToCartBox);
     sizeHolder = initializeElement(htmlDiv, sizeHolder, [appClassNames.sizeHolder], addToCartBox);
 
-    dynamicItemHolder = initializeElement(htmlDiv, dynamicItemHolder, [appClassNames.dynamicQtyHolder], addToCartBox);
+    dynamicItemHolder = initializeElement(htmlDiv, dynamicItemHolder, [appClassNames.dynamicItemHolder], addToCartBox);
 
     for (var i = 0; i < SizesResult[0].length; i++) {
         sizeBtn = initializeElement(htmlButton, sizeBtn, [appClassNames.sizeBtn], sizeHolder);
@@ -231,15 +231,35 @@ function selectSize(thisSizeBtn) {
 
     if (currentSelectedSizeID != $(thisSizeBtn).attr(attributePrefix + dataSizeId)) {
         currentSelectedSizeID = $(thisSizeBtn).attr(attributePrefix + dataSizeId);
-        $(dynamicQtyHolder).children().remove();
+        $(dynamicItemHolder).children().remove();
 
-        if (parseInt($(thisSizeBtn).attr(attributePrefix + dataStock)) > 0) {
+        var currentStock = parseInt($(thisSizeBtn).attr(attributePrefix + dataStock));
+
+        if (currentStock > 0) {
             dynamicQtyHolder = initializeElement(htmlDiv, dynamicQtyHolder, null, dynamicItemHolder);
             qtyLabel = initializeElement(htmlSpan, qtyLabel, [appClassNames.qtyLabel], dynamicQtyHolder);
             stockTxt = initializeElement(htmlSpan, stockTxt, null, dynamicQtyHolder);
 
+            qtyBox = initializeElement(htmlDiv, qtyBox, [appClassNames.qtyBox], dynamicQtyHolder);
+            minusBtn = initializeElement(htmlDiv, minusBtn, [appClassNames.minusBtn], qtyBox);
+            minusBtnIcon = initializeElement(htmlDiv, minusBtnIcon, ['fas fa-minus'], minusBtn);
+
+            qtyInput = initializeElement(htmlInputText, qtyInput, null, qtyBox);
+
+            plusBtn = initializeElement(htmlDiv, plusBtn, [appClassNames.plusBtn], qtyBox);
+            plusBtnIcon = initializeElement(htmlDiv, plusBtnIcon, ['fas fa-plus'], plusBtn);
+
             addObjectText(qtyLabel, productTexts.quantity);
             addObjectText(stockTxt, productTexts.stock + ': ' + $(thisSizeBtn).attr(attributePrefix + dataStock));
+            addObjectText(qtyInput, 1);
+
+            $(minusBtn).unbind(appEvents.click).on(appEvents.click, function () {
+                deductQty();
+            });
+
+            $(plusBtn).unbind(appEvents.click).on(appEvents.click, function () {
+                addQty(currentStock);
+            });
         }
     }
 }
