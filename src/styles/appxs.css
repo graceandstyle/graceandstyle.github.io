@@ -1,0 +1,350 @@
+﻿@media (min-width: 501px) and (max-width: 800px) {
+  .backgroundpanel > .backgroundellipse {
+    background-color: rgba(230, 201, 42, 0.1);
+    border-radius: 50%;
+    height: 1200px;
+    position: absolute;
+    width: 1200px;
+    -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    animation: backgroundpanelfaidein 1s forwards ease-in-out;
+  }
+
+  .backgroundpanel > .backgroundellipsetopright {
+    left: 50%;
+    top: 0%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .backgroundpanel > .backgroundellipsebottomleft {
+    display: none;
+  }
+
+  .categorypanel {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 20px;
+    width: calc(100% - 350px);
+    height: auto;
+    font-size: 16pt;
+    z-index: 2;
+    overflow: hidden;
+    text-align: center;
+    -webkit-animation: categoryHolderIn 1s forwards ease-in-out;
+    -moz-animation: categoryHolderIn 1s forwards ease-in-out;
+    -o-animation: categoryHolderIn 1s forwards ease-in-out;
+    animation: categoryHolderIn 1s forwards ease-in-out;
+    overflow: unset;
+  }
+
+  .categorypanel > .dropdownicon {
+    position: absolute;
+    top: 31%;
+    right: 10px;
+    width: auto;
+    height: auto;
+    border: none;
+    padding: 0;
+    font-size: 15pt;
+    z-index: 0;
+    display: block;
+    opacity: 0;
+    -webkit-animation: categoryHolderIn 1s forwards ease-in-out;
+    -moz-animation: categoryHolderIn 1s forwards ease-in-out;
+    -o-animation: categoryHolderIn 1s forwards ease-in-out;
+    animation: categoryHolderIn 1s forwards ease-in-out;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+
+  .categorypanel > select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    display: block !important;
+    font-size: 16pt;
+  }
+
+  .categorypanel > div {
+    position: relative;
+    width: calc(100% - 4px);
+    height: auto;
+    padding: 10px 0;
+    border: 2px solid #343434;
+    border-radius: 30px;
+    -webkit-animation: categoryIn 1s forwards ease-in-out;
+    -moz-animation: categoryIn 1s forwards ease-in-out;
+    -o-animation: categoryIn 1s forwards ease-in-out;
+    animation: categoryIn 1s forwards ease-in-out;
+    overflow: unset;
+    min-height: 23px !important;
+  }
+
+  .categorypanel > div > span {
+    display: none;
+    text-align: center;
+    margin-right: unset;
+    -webkit-animation: unset;
+    -moz-animation: unset;
+    -o-animation: unset;
+    animation: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    transform: unset;
+  }
+
+  .categorypanel > div > .active {
+    display: block;
+    font-weight: bold;
+  }
+
+  .productlistpanel {
+    position: relative;
+    z-index: 2;
+    height: auto;
+    left: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    transform: unset;
+    bottom: unset;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(100% - 100px);
+    overflow-x: auto;
+    padding: 20px 50px;
+    overflow-y: hidden;
+  }
+
+  .productlistpanel > .listitem {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0.5;
+    cursor: pointer;
+    margin-right: 60px;
+  }
+
+  .productlistpanel > .listitem:hover {
+    opacity: 1;
+  }
+
+  .productlistpanel > .active {
+    opacity: 1;
+  }
+
+  .productlistpanel > .listitem:last-child {
+    margin-right: unset;
+  }
+
+  .productlistpanel > .listitem > .imgholder {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .productlistpanel > .listitem > .imgholder > img {
+    height: 70%;
+    position: absolute;
+    left: -30%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .productlistpanel > .listitem > .imgholderunderlay {
+    border-radius: 5px;
+  }
+
+  .productlistpanel > .listitem > .detailsholder {
+    display: none;
+  }
+
+  .productlistpanel > .listitem > .detailsholder > .name {
+    display: none;
+  }
+
+  .productlistpanel > .listitem > .detailsholder > .price {
+    display: none;
+  }
+
+  .itempanel {
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    transform: unset;
+    width: 100%;
+    height: auto;
+    padding-top: 70px;
+  }
+
+  .itempanel > .detailsholder {
+    position: relative;
+    z-index: 1;
+    width: calc(100% - 60px);
+    padding: 30px;
+    top: unset;
+    left: unset;
+  }
+
+  .itempanel > .detailsholder > span {
+    white-space: nowrap;
+    display: block;
+  }
+
+  .itempanel > .detailsholder > .trademark {
+    font-size: 12pt;
+  }
+
+  .itempanel > .detailsholder > .itemname {
+    font-size: 25pt;
+    font-weight: bold;
+  }
+
+  .itempanel > .detailsholder > .itemprice {
+    font-size: 20pt;
+    color: #e6c92a;
+    font-weight: bold;
+  }
+
+  .itempanel > .imgholder {
+    text-align: center;
+    padding-top: 50px;
+    position: relative;
+    height: 60%;
+    width: 100%;
+    z-index: 0;
+    top: unset;
+    left: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    transform: unset;
+  }
+
+  .itempanel > .imgholder > img {
+    position: relative;
+    top: unset;
+    left: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    transform: unset;
+    height: auto;
+    width: 90%;
+    z-index: 0;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .itempanel > .colorpanel {
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    text-align: center;
+    height: auto;
+    z-index: 1;
+    right: unset;
+    top: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    transform: unset;
+    bottom: unset;
+  }
+
+  .itempanel > .colorpanel > .colorbox {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: unset;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0.5;
+    -webkit-animation: showColor 1s forwards ease-in-out;
+    -moz-animation: showColor 1s forwards ease-in-out;
+    -o-animation: showColor 1s forwards ease-in-out;
+    animation: showColor 1s forwards ease-in-out;
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .itempanel > .colorpanel > .colorbox:hover {
+    opacity: 1;
+  }
+
+  .itempanel > .colorpanel > .colorbox > .color {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+  }
+
+  .itempanel > .colorpanel > .colorbox:last-child {
+    margin-right: unset;
+  }
+
+  .itempanel > .colorpanel > .active {
+    opacity: 1;
+  }
+}
