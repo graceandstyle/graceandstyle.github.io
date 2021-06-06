@@ -118,10 +118,11 @@
   }
 
   .productlistpanel {
-    position: relative;
+    position: absolute;
     z-index: 2;
     height: auto;
     left: unset;
+    top: 70px;
     -webkit-transform: unset;
     -moz-transform: unset;
     -ms-transform: unset;
@@ -134,14 +135,15 @@
     overflow-x: auto;
     padding: 20px 50px;
     overflow-y: hidden;
+    bottom: unset;
   }
 
   .productlistpanel > .listitem {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     white-space: nowrap;
@@ -164,8 +166,8 @@
 
   .productlistpanel > .listitem > .imgholder {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     display: inline-block;
@@ -185,7 +187,13 @@
   }
 
   .productlistpanel > .listitem > .imgholderunderlay {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    z-index: 0;
     border-radius: 5px;
+    top: 0;
+    left: 0;
   }
 
   .productlistpanel > .listitem > .detailsholder {
@@ -212,7 +220,8 @@
     transform: unset;
     width: 100%;
     height: auto;
-    padding-top: 70px;
+    padding-top: 150px;
+    padding-bottom: 50px;
   }
 
   .itempanelmarginbottom {
