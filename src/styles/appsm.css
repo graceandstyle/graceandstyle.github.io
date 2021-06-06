@@ -35,6 +35,10 @@
         left: 5%;
     }
 
+    .itempanel > .sizepanel {
+        right: 5%;
+    }
+
     .itempanel > .colorpanel {
         right: 5%;
     }

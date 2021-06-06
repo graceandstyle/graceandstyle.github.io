@@ -40,7 +40,8 @@ export default function Item({ filteredItem, currentVariationID, imgURL, updateC
     }, [currentVariationID, updateCurrentVariationID, filteredItem]);
 
     return (
-        <section className="itempanel">
+        <section className={ filteredSize.length && filteredSize[0].Stock > 0
+            ? 'itempanel' : 'itempanel itempanelmarginbottom'}>
             <div className="imgholder">
                 <div style={imgLoaded? {opacity: 0} : {}}>
                     <div className="fas fa-spinner fa-spin"></div>
@@ -82,6 +83,7 @@ export default function Item({ filteredItem, currentVariationID, imgURL, updateC
                 <button className="addtocartbtn outofstock">
                     <div className="fas fa-ban primaryicon"></div>
                     <span>OUT OF STOCK</span>
+                    <div className="note">The selected size is currently unavailable. Please choose a different size or different item.</div>
                 </button>
             }
             

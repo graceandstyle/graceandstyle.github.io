@@ -23,8 +23,8 @@ export default function Sizes({filteredVariation, currentSizeID, updateCurrentSi
 
     useEffect(() => {
         if(!currentSizeID){
-            updateCurrentSizeID(filteredVariation[0].Sizes.filter((p) => p.Stock > 0)[0].SizeID);
-            prevSizeIDRef.current = filteredVariation[0].Sizes.filter((p) => p.Stock > 0)[0].SizeID;
+            updateCurrentSizeID(filteredVariation[0].Sizes[0].SizeID);
+            prevSizeIDRef.current = filteredVariation[0].Sizes[0].SizeID;
         }
     }, [currentSizeID, updateCurrentSizeID, filteredVariation]);
 

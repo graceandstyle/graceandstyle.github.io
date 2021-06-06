@@ -215,6 +215,10 @@
     padding-top: 70px;
   }
 
+  .itempanelmarginbottom {
+    margin-bottom: 40px;
+  }
+
   .itempanel > .detailsholder {
     position: relative;
     z-index: 1;
@@ -274,6 +278,24 @@
     z-index: 0;
     margin: 20px 0;
     text-align: center;
+  }
+
+  .itempanel > .sizepanel {
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    text-align: center;
+    height: auto;
+    z-index: 1;
+    right: unset;
+    top: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    transform: unset;
+    bottom: unset;
+    margin-bottom:10px;
   }
 
   .itempanel > .colorpanel {
