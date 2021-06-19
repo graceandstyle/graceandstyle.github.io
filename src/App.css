@@ -11,6 +11,10 @@
 @import "./plugins/Lato/latostyle.css";
 @import "./plugins/fontawesome-free-5.13.0-web/css/all.min.css";
 
+:root {
+  --footerHeight: 100px;
+}
+
 span,
 input,
 button,
@@ -21,6 +25,11 @@ p {
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 *:focus {
@@ -88,7 +97,7 @@ div {
 }
 
 .main {
-  background-color: #fff;
+  background-color: #eee;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;

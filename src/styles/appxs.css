@@ -304,7 +304,7 @@
     -o-transform: unset;
     transform: unset;
     bottom: unset;
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
 
   .itempanel > .colorpanel {
@@ -377,5 +377,63 @@
 
   .itempanel > .colorpanel > .active {
     opacity: 1;
+  }
+
+  .itempanel > .addtocartbtn {
+    position: relative;
+    width: auto;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background: none;
+    padding: 10px 20px;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: bold;
+    -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    border: 2px solid #e6c92a;
+    color: #fff;
+    background-color: #e6c92a;
+    font-size: 12pt;
+  }
+
+  .itempanel > .addtocartbtn:hover {
+    color: #e6c92a;
+    border: 2px solid #e6c92a;
+  }
+
+  .itempanel > .addtocartbtn > .primaryicon {
+    margin-right: 5px;
+  }
+
+  .socialmediapanel {
+    position: relative;
+    bottom: unset;
+    left: unset;
+    width: 100%;
+    height: auto;
+    background-color: #eee;
+    text-align: center;
+    padding: 20px 0 50px 0;
+    font-size: 30pt;
+  }
+
+  .socialmediapanel > a {
+    margin-right: 10px;
+    color: #343434;
+  }
+
+  .socialmediapanel > a:last-child {
+    margin-right: unset;
   }
 }

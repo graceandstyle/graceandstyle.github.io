@@ -391,7 +391,8 @@
     transform: translateX(-50%);
     background: none;
     padding: 10px 20px;
-    border-radius: 20px;
+    height: 50px;
+    border-radius: 25px;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
@@ -403,6 +404,7 @@
     border: 2px solid #e6c92a;
     color: #fff;
     background-color: #e6c92a;
+    font-size: 12pt;
   }
 
   .itempanel > .addtocartbtn:hover {
@@ -420,10 +422,31 @@
     border: 2px solid #eee !important;
     cursor: not-allowed !important;
   }
-  
+
   .itempanel > .outofstock > .note {
     width: 100%;
     white-space: normal;
     font-size: 10px;
+  }
+
+  .socialmediapanel {
+    position: relative;
+    bottom: unset;
+    left: unset;
+    width: 100%;
+    height: auto;
+    background-color: #eee;
+    text-align: center;
+    padding: 20px 0 50px 0;
+    font-size: 30pt;
+  }
+
+  .socialmediapanel > a {
+    margin-right: 10px;
+    color: #343434;
+  }
+
+  .socialmediapanel > a:last-child {
+    margin-right: unset;
   }
 }
