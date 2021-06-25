@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundary from './ErrorBoundary';
+import { CartProvider } from "./cartContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')

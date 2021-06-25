@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Sizes from './Sizes';
+import { useCart } from "../cartContext"
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 function RenderVariants({ i, currentVariationID, handleClick, VariationID, DisplayValue, Hex, Image }) {
@@ -19,6 +20,7 @@ function RenderVariants({ i, currentVariationID, handleClick, VariationID, Displ
 }
 
 export default function Item({ filteredItem, currentVariationID, imgURL, updateCurrentVariationID, filteredVariation, currentSizeID, updateCurrentSizeID, filteredSize }){
+    const { dispatch } = useCart();
     const [imgLoaded, setImgLoaded] = useState(false);
     const prevVariationIDRef = useRef('');
 
@@ -75,11 +77,14 @@ export default function Item({ filteredItem, currentVariationID, imgURL, updateC
             </div>
             {
                 filteredSize.length && filteredSize[0].Stock > 0 ?
-                <button className="addtocartbtn">
+                <button className="addtocartbtn"
+                    onClick={() => {
+                        dispatch({type:"add", currentSizeID });
+                        console.log('added');
+                    }}>
                     <div className="fas fa-plus primaryicon"></div>
                     <span>ADD TO CART</span>
                 </button> :
-                
                 <button className="addtocartbtn outofstock">
                     <div className="fas fa-ban primaryicon"></div>
                     <span>OUT OF STOCK</span>
