@@ -83,7 +83,7 @@ export default function App() {
         updateCurrentItemID={updateCurrentItemID} /> : <></>
       }
       <SocialMedia />
-      <Cart />
+      {/* <Cart /> */}
     </>
   );
 }

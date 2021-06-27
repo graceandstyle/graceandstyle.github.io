@@ -9,7 +9,6 @@ export default function cartReducer(cart, action) {
         }
         case "add":
             const { currentSizeID } = action;
-            console.log(currentSizeID);
             const itemInCart = cart.find((i) => i.currentSizeID === currentSizeID);
             if(itemInCart) {
                 return cart.map((i) => i.currentSizeID === currentSizeID ? { ...i, quantity: i.quantity + 1} : i );

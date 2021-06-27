@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import Sizes from './Sizes';
 import { useCart } from "../cartContext"
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -20,7 +20,7 @@ function RenderVariants({ i, currentVariationID, handleClick, VariationID, Displ
 }
 
 export default function Item({ filteredItem, currentVariationID, imgURL, updateCurrentVariationID, filteredVariation, currentSizeID, updateCurrentSizeID, filteredSize }){
-    const { dispatch } = useCart();
+    const { cart, dispatch } = useCart();
     const [imgLoaded, setImgLoaded] = useState(false);
     const prevVariationIDRef = useRef('');
 
@@ -40,6 +40,12 @@ export default function Item({ filteredItem, currentVariationID, imgURL, updateC
             prevVariationIDRef.current = filteredItem[0].Variations[0].VariationID;
         }
     }, [currentVariationID, updateCurrentVariationID, filteredItem]);
+
+    const currentItemInCart = useMemo(
+        () => cart.filter((p) => p.currentSizeID === currentSizeID), [cart, currentSizeID]
+    );
+
+    console.log(currentItemInCart);
 
     return (
         <section className={ filteredSize.length && filteredSize[0].Stock > 0
@@ -76,11 +82,17 @@ export default function Item({ filteredItem, currentVariationID, imgURL, updateC
                 <span className="itemprice">{filteredItem[0].Price}</span>
             </div>
             {
+                currentItemInCart && currentItemInCart.length > 0 &&  currentItemInCart[0].quantity > 0?
+                <div className="currentitemincart">
+                    <div className="fas fa-shopping-bag"></div>
+                    <span>{currentItemInCart[0].quantity}</span>
+                </div> : <></>
+            }
+            {
                 filteredSize.length && filteredSize[0].Stock > 0 ?
                 <button className="addtocartbtn"
                     onClick={() => {
                         dispatch({type:"add", currentSizeID });
-                        console.log('added');
                     }}>
                     <div className="fas fa-plus primaryicon"></div>
                     <span>ADD TO CART</span>
