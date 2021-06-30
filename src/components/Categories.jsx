@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { useCart } from "../cartContext";
 
 function CategoryNames({currentCategoryID, i, handleClick, CategoryID, DisplayValue}){
     return (
@@ -9,28 +10,29 @@ function CategoryNames({currentCategoryID, i, handleClick, CategoryID, DisplayVa
     );
 }
 
-export default function Categories({productsFinal, updateCurrentCategoryID, currentCategoryID}) {
+export default function Categories() {
+    const { 
+        productsFinal,
+        currentCategoryIDDispatch,
+        filteredCategoryDispatch,
+        currentItemIDDispatch
+    } = useCart();
     const prevCategoryIDRef = useRef('');
+    const [selectedCategoryID, setSelectedCategoryID] = useState('');
 
-    function  handleClick(categoryID) {
+    function handleUpdate(categoryID){
         if(prevCategoryIDRef.current !== categoryID) {
-            updateCurrentCategoryID(categoryID);
+            currentCategoryIDDispatch({type:"select", categoryID });
+            filteredCategoryDispatch({type:"filter", productsFinal, categoryID });
+            currentItemIDDispatch({type:"reset" });
+            setSelectedCategoryID(categoryID);
             prevCategoryIDRef.current = categoryID;
-        }
-    }
-
-    function handleChange(e) {
-        if(prevCategoryIDRef.current !== e.target.value) {
-            e.persist();
-            updateCurrentCategoryID(e.target.value);
-            prevCategoryIDRef.current = e.target.value;
-        }            
+        } 
     }
 
     useEffect(() => {
-        if(!currentCategoryID){
-            updateCurrentCategoryID(productsFinal[0].CategoryID);
-            prevCategoryIDRef.current = productsFinal[0].CategoryID;
+        if(!selectedCategoryID){
+            handleUpdate(productsFinal[0].CategoryID);
         }
     },);
 
@@ -40,21 +42,20 @@ export default function Categories({productsFinal, updateCurrentCategoryID, curr
                 {productsFinal.map((p, i) => {
                     return (
                         <CategoryNames key={p.CategoryID}
-                        currentCategoryID={currentCategoryID}
-                        i={i}
-                        handleClick={handleClick}
-                        {...p} />
+                            currentCategoryID={selectedCategoryID}
+                            i={i} handleClick={handleUpdate} {...p} 
+                        />
                     )
                 })}
             </div>
-            <select
-                value={currentCategoryID}
-                onChange={handleChange}
-                >
+            <select value={selectedCategoryID} 
+                onChange={(e) => {
+                    e.persist();
+                    handleUpdate(e.target.value)
+                }}>
                 {productsFinal.map((p, i) => {
                     return (
-                        <option key={p.CategoryID}
-                            value={p.CategoryID}>{p.DisplayValue}</option>
+                        <option key={p.CategoryID} value={p.CategoryID}>{p.DisplayValue}</option>
                     )
                 })}
             </select>

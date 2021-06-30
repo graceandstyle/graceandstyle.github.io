@@ -13,7 +13,7 @@ export default function ShoppingBagIcon() {
         <section className={ numItemsInCart === 0 ?
                 'shoppingbagiconpanel noitem' :
                 'shoppingbagiconpanel' }>
-            { numItemsInCart !== 0 ? <div className="indicator"></div> : <></> }
+            { numItemsInCart !== 0 && <div className="indicator"></div> }
             <div className="fas fa-shopping-bag shopicon"></div>
         </section>
     );    

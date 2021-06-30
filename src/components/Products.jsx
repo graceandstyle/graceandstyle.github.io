@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useCart } from "../cartContext";
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 function RenderProducts({ i, currentItemID, handleClick, DisplayValue, ItemID, Price, Thumbnail, ThumbnailHex }) {
@@ -27,34 +28,46 @@ function RenderProducts({ i, currentItemID, handleClick, DisplayValue, ItemID, P
     );
 }
 
-export default function Products({ filteredProducts, currentItemID, updateCurrentItemID }) {
+export default function Products() {
+    const { 
+        currentItemID,
+        filteredCategory,
+        currentItemIDDispatch,
+        currentVariationIDDispatch,
+        filteredItemDispatch
+    } = useCart();
     const prevItemIDRef = useRef('');
+    const [selectedItemID, setSelectedItemID] = useState('');
 
-    function  handleClick(itemID) {
+    function  handleUpdate(itemID) {
         if(prevItemIDRef.current !== itemID){
-            updateCurrentItemID(itemID);
+            currentItemIDDispatch({ type:"select", currentItemID: itemID });
+            filteredItemDispatch({ type:"filter", filteredCategory, currentItemID: itemID });
+            currentVariationIDDispatch({ type:"reset" });
+            setSelectedItemID(itemID);
             prevItemIDRef.current = itemID;
         }
     }
 
     useEffect(() => {
-        if(!currentItemID){
-            updateCurrentItemID(filteredProducts[0].Items[0].ItemID);
-            prevItemIDRef.current = filteredProducts[0].Items[0].ItemID;
+        if(filteredCategory && filteredCategory.length > 0 && !currentItemID){
+            handleUpdate(filteredCategory[0].Items[0].ItemID);
         }
     },);
 
     return (
         <section className="productlistpanel">
-            {filteredProducts[0].Items.map((p, i) => {
-                return (
-                    <RenderProducts key={p.ItemID}
-                    currentItemID={currentItemID}
-                    i={i}
-                    handleClick={handleClick}
-                    {...p} />
-                )
-            })}
+            {
+                filteredCategory && filteredCategory.length > 0 && filteredCategory[0].Items.map((p, i) => {
+                    return (
+                        <RenderProducts key={p.ItemID}
+                        currentItemID={selectedItemID}
+                        i={i}
+                        handleClick={handleUpdate}
+                        {...p} />
+                    )
+                })
+            }
         </section>
     );
 }

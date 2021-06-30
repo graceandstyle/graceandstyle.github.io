@@ -1,4 +1,5 @@
-import React, {useRef, useEffect } from 'react';
+import React, {useRef, useEffect, useState } from 'react';
+import { useCart } from "../cartContext"
 
 function RenderSizes({ i, DisplayValue, SizeID, currentSizeID, handleClick}) {
     return (
@@ -11,31 +12,40 @@ function RenderSizes({ i, DisplayValue, SizeID, currentSizeID, handleClick}) {
     );
 }
 
-export default function Sizes({filteredVariation, currentSizeID, updateCurrentSizeID}) {
+export default function Sizes() {
+    const { 
+        currentSizeID,
+        filteredVariation,
+        currentSizeIDDispatch,
+        filteredSizeDispatch
+    } = useCart();
     const prevSizeIDRef = useRef('');
+    const [selectedSizeID, setSelectedSizeID] = useState('');
 
-    function  handleClick(sizeID) {
+    function  handleUpdate(sizeID) {
         if(prevSizeIDRef.current !== sizeID) {
-            updateCurrentSizeID(sizeID);
+            currentSizeIDDispatch({type:"select", sizeID });
+            filteredSizeDispatch({type:"filter", filteredVariation, sizeID })
+            setSelectedSizeID(sizeID);
             prevSizeIDRef.current = sizeID;
         }
     }
 
     useEffect(() => {
-        if(!currentSizeID){
-            updateCurrentSizeID(filteredVariation[0].Sizes[0].SizeID);
-            prevSizeIDRef.current = filteredVariation[0].Sizes[0].SizeID;
+        if(filteredVariation && filteredVariation.length > 0 && !currentSizeID){
+            handleUpdate(filteredVariation[0].Sizes[0].SizeID);
         }
-    }, [currentSizeID, updateCurrentSizeID, filteredVariation]);
+    },);
 
     return (
         <div className="sizepanel">
-            {filteredVariation[0].Sizes.map((p, i) => {
+            {filteredVariation && filteredVariation.length > 0 &&
+                filteredVariation[0].Sizes.map((p, i) => {
                 return (
                     <RenderSizes key={p.SizeID}
                     i={i}
-                    currentSizeID={currentSizeID}
-                    handleClick={handleClick}
+                    currentSizeID={selectedSizeID}
+                    handleClick={handleUpdate}
                     {...p} />
                 )
             })}
