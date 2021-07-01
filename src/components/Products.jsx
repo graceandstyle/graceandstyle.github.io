@@ -37,14 +37,12 @@ export default function Products() {
         filteredItemDispatch
     } = useCart();
     const prevItemIDRef = useRef('');
-    const [selectedItemID, setSelectedItemID] = useState('');
 
     function  handleUpdate(itemID) {
         if(prevItemIDRef.current !== itemID){
             currentItemIDDispatch({ type:"select", currentItemID: itemID });
             filteredItemDispatch({ type:"filter", filteredCategory, currentItemID: itemID });
             currentVariationIDDispatch({ type:"reset" });
-            setSelectedItemID(itemID);
             prevItemIDRef.current = itemID;
         }
     }
@@ -61,7 +59,7 @@ export default function Products() {
                 filteredCategory && filteredCategory.length > 0 && filteredCategory[0].Items.map((p, i) => {
                     return (
                         <RenderProducts key={p.ItemID}
-                        currentItemID={selectedItemID}
+                        currentItemID={currentItemID}
                         i={i}
                         handleClick={handleUpdate}
                         {...p} />

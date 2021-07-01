@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useCart } from "../cartContext";
 
 function CategoryNames({currentCategoryID, i, handleClick, CategoryID, DisplayValue}){
@@ -12,26 +12,25 @@ function CategoryNames({currentCategoryID, i, handleClick, CategoryID, DisplayVa
 
 export default function Categories() {
     const { 
+        currentCategoryID,
         productsFinal,
         currentCategoryIDDispatch,
         filteredCategoryDispatch,
         currentItemIDDispatch
     } = useCart();
     const prevCategoryIDRef = useRef('');
-    const [selectedCategoryID, setSelectedCategoryID] = useState('');
 
     function handleUpdate(categoryID){
         if(prevCategoryIDRef.current !== categoryID) {
             currentCategoryIDDispatch({type:"select", categoryID });
             filteredCategoryDispatch({type:"filter", productsFinal, categoryID });
             currentItemIDDispatch({type:"reset" });
-            setSelectedCategoryID(categoryID);
             prevCategoryIDRef.current = categoryID;
         } 
     }
 
     useEffect(() => {
-        if(!selectedCategoryID){
+        if(!currentCategoryID){
             handleUpdate(productsFinal[0].CategoryID);
         }
     },);
@@ -42,13 +41,13 @@ export default function Categories() {
                 {productsFinal.map((p, i) => {
                     return (
                         <CategoryNames key={p.CategoryID}
-                            currentCategoryID={selectedCategoryID}
+                            currentCategoryID={currentCategoryID}
                             i={i} handleClick={handleUpdate} {...p} 
                         />
                     )
                 })}
             </div>
-            <select value={selectedCategoryID} 
+            <select value={currentCategoryID} 
                 onChange={(e) => {
                     e.persist();
                     handleUpdate(e.target.value)

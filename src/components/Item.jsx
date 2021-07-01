@@ -29,12 +29,12 @@ export default function Item(){
         cartDispatch,
         currentSizeIDDispatch,
         currentVariationIDDispatch,
-        filteredVariationDispatch
+        filteredVariationDispatch,
+        filteredSizeDispatch
     } = useCart();
     const prevVariationIDRef = useRef('');
     const [imgLoaded, setImgLoaded] = useState(false);
     const [imgURL, setImgURL] = useState('');
-    const [selectedVariationID, setSelectedVariationID] = useState('');
 
     function  handleUpdate(variationID, imgURL) {
         if(prevVariationIDRef.current !== variationID) {
@@ -42,10 +42,14 @@ export default function Item(){
             filteredVariationDispatch({type:"filter", filteredItem, variationID });
             currentSizeIDDispatch({type:"reset", variationID });
             setImgURL(imgURL);
-            setSelectedVariationID(variationID);
             setImgLoaded(false);
             prevVariationIDRef.current = variationID;
         }
+    }
+
+    function addToCart(){
+        cartDispatch({type:"add", currentSizeID });
+        filteredSizeDispatch({type:"addtocart", currentSizeID });
     }
 
     useEffect(() => {
@@ -79,9 +83,8 @@ export default function Item(){
                 {   filteredItem && filteredItem.length > 0 && filteredItem[0].Variations.map((p, i) => {
                     return (
                         <RenderVariants key={p.VariationID}
-                        i={i}
-                        handleClick={handleUpdate}
-                        currentVariationID = { selectedVariationID }
+                        i={i} handleClick={handleUpdate}
+                        currentVariationID = { currentVariationID }
                         {...p} />
                     )
                 })}
@@ -101,16 +104,19 @@ export default function Item(){
             {
                 filteredSize.length && filteredSize[0].Stock > 0 ?
                 <button className="addtocartbtn"
-                    onClick={() => {
-                        cartDispatch({type:"add", currentSizeID });
-                    }}>
+                    onClick={() => addToCart() }>
                     <div className="fas fa-plus primaryicon"></div>
                     <span>ADD TO CART</span>
                 </button> :
                 <button className="addtocartbtn outofstock">
                     <div className="fas fa-ban primaryicon"></div>
                     <span>OUT OF STOCK</span>
-                    <div className="note">The selected size is currently unavailable. Please choose a different size or different item.</div>
+                    <div className="note">
+                        {
+                            (currentItemInCart && currentItemInCart.length > 0 &&  currentItemInCart[0].quantity > 0) ?
+                            'You have reached the maximum quantity available for this item' :
+                            'The selected size is currently unavailable. Please choose a different size or different item.'
+                        }</div>
                 </button>
             }
             
