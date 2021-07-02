@@ -49,7 +49,7 @@ export default function Item(){
 
     function addToCart(){
         cartDispatch({type:"add", currentSizeID });
-        filteredSizeDispatch({type:"addtocart", currentSizeID });
+        //filteredSizeDispatch({type:"addtocart", currentSizeID });
     }
 
     useEffect(() => {
