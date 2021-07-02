@@ -50,8 +50,14 @@ export default function Item(){
     }
 
     function addToCart(){
-        cartDispatch({type:"add", currentSizeID });
-        productDispatch({type:"addtocart", currentCategoryID, currentItemID, currentVariationID, currentSizeID, currentStock: filteredSize[0].Stock });
+        cartDispatch({type:"add", imgURL, currentCategoryID, currentItemID, currentVariationID, currentSizeID });
+        productDispatch({type:"addtocart", 
+            currentCategoryID,
+            currentItemID,
+            currentVariationID,
+            currentSizeID,
+            currentStock: filteredSize[0].Stock,
+            quantity: 1 });
     }
 
     useEffect(() => {

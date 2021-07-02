@@ -24,6 +24,7 @@ export function CartProvider(props) {
     const { data: products, error, loading } = useFetch('GraceNStyle/GetProducts');
 
     const [productsFinal, productDispatch] = useReducer(productReducer, []);
+    const [stockUpdated, setStockDispatch] = useReducer(productReducer, false);
     const [cart, cartDispatch] = useReducer(cartReducer, initialCart);
     const [currentCategoryID, currentCategoryIDDispatch] = useReducer(categoryReducer, '');
     const [filteredCategory, filteredCategoryDispatch] = useReducer(categoryReducer, []);
@@ -40,6 +41,23 @@ export function CartProvider(props) {
     useEffect(() => {
         productDispatch({type:"initialize", data: error? fallbackProducts : products })
     },[products, error]);
+
+    useEffect(() => {
+        if(products && products.length > 0 && cart && cart.length > 0 && !stockUpdated) {
+            cart.forEach((c) => {
+                const currentStock = products.filter((p) => p.CategoryID === c.currentCategoryID)[0].Items.filter((i) => i.ItemID === c.currentItemID)[0].Variations.filter((v) => v.VariationID === c.currentVariationID)[0].Sizes.filter((s) => s.SizeID === c.currentSizeID)[0].Stock;
+                productDispatch({type:"addtocart", 
+                    currentCategoryID: c.currentCategoryID, 
+                    currentItemID: c.currentItemID, 
+                    currentVariationID: c.currentVariationID, 
+                    currentSizeID: c.currentSizeID,
+                    currentStock,
+                    quantity: c.quantity 
+                });
+            });
+        }
+        setStockDispatch({type:"stockupdated"});
+    },[products, cart, stockUpdated]);
   
     const contextValue = { 
         cart,
