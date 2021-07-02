@@ -22,6 +22,8 @@ function RenderVariants({ i, currentVariationID, handleClick, VariationID, Displ
 export default function Item(){
     const { 
         cart,
+        currentCategoryID,
+        currentItemID,
         currentSizeID,
         currentVariationID,
         filteredItem,
@@ -30,7 +32,7 @@ export default function Item(){
         currentSizeIDDispatch,
         currentVariationIDDispatch,
         filteredVariationDispatch,
-        filteredSizeDispatch
+        productDispatch
     } = useCart();
     const prevVariationIDRef = useRef('');
     const [imgLoaded, setImgLoaded] = useState(false);
@@ -49,7 +51,7 @@ export default function Item(){
 
     function addToCart(){
         cartDispatch({type:"add", currentSizeID });
-        //filteredSizeDispatch({type:"addtocart", currentSizeID });
+        productDispatch({type:"addtocart", currentCategoryID, currentItemID, currentVariationID, currentSizeID, currentStock: filteredSize[0].Stock });
     }
 
     useEffect(() => {
