@@ -8,8 +8,8 @@ export default function productReducer(products, action) {
             return newItems;
         }
         case "initialize": {
-            const { data } = action;
-            return data;
+            const { productData } = action;
+            return productData;
         }
         case "stockupdated": {
             return true;

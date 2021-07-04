@@ -32,7 +32,8 @@ export default function Item(){
         currentSizeIDDispatch,
         currentVariationIDDispatch,
         filteredVariationDispatch,
-        productDispatch
+        productDispatch,
+        setStockDispatch
     } = useCart();
     const prevVariationIDRef = useRef('');
     const [imgLoaded, setImgLoaded] = useState(false);
@@ -58,6 +59,7 @@ export default function Item(){
             currentSizeID,
             currentStock: filteredSize[0].Stock,
             quantity: 1 });
+        setStockDispatch({type:"stockupdated"});
     }
 
     useEffect(() => {

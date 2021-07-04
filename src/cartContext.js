@@ -39,7 +39,7 @@ export function CartProvider(props) {
     ,[cart]);
 
     useEffect(() => {
-        productDispatch({type:"initialize", data: error? fallbackProducts : products })
+        productDispatch({type:"initialize", productData: error ? fallbackProducts : products });
     },[products, error]);
 
     useEffect(() => {
@@ -55,8 +55,8 @@ export function CartProvider(props) {
                     quantity: c.quantity 
                 });
             });
+            setStockDispatch({type:"stockupdated"});
         }
-        setStockDispatch({type:"stockupdated"});
     },[products, cart, stockUpdated]);
   
     const contextValue = { 
@@ -80,7 +80,8 @@ export function CartProvider(props) {
         filteredItemDispatch,
         filteredSizeDispatch,
         filteredVariationDispatch,
-        productDispatch
+        productDispatch,
+        setStockDispatch
      };
 
     return <CartContext.Provider value={contextValue}>
