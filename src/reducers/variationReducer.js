@@ -8,8 +8,8 @@ export default function variationReducer(variationItem, action) {
             return '';
         }
         case "select": {
-            const { variationID } = action;
-            return variationID;
+            const { variation } = action;
+            return variation;
         }
         default:
             throw new Error("Unhandled action " + action.type);

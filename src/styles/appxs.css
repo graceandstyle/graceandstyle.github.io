@@ -379,6 +379,18 @@
     opacity: 1;
   }
 
+  .itempanel > .currentitemincart {
+    position: relative;
+    margin: auto;
+    bottom: unset;
+    left: unset;
+    transform: unset;
+    margin-bottom: 30px;
+    display: inline-block;
+    width: auto;
+    text-align: center;
+  }
+
   .itempanel > .addtocartbtn {
     position: relative;
     width: auto;

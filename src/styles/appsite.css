@@ -266,6 +266,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: calc(100% - 250px);
+  text-align: center;
 }
 
 .itempanelmarginbottom {
@@ -492,7 +493,6 @@
   padding: 10px 20px;
   border-radius: 20px;
   text-align: center;
-  vertical-align: middle;
   cursor: pointer;
   font-weight: bold;
   -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
@@ -504,6 +504,7 @@
   background-color: #e6c92a;
   -webkit-appearance: none;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
 .itempanel > .outofstock {

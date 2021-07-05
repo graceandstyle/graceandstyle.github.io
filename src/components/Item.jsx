@@ -9,7 +9,7 @@ function RenderVariants({ i, currentVariationID, handleClick, VariationID, Displ
                 'colorbox addtooltip active' :
                 'colorbox addtooltip' }
             style={{animationDelay: `0.${1 * i}s`}}
-            onClick={() => handleClick(VariationID, baseUrl + Image)}>
+            onClick={() => handleClick(VariationID, baseUrl + Image, Hex)}>
             <div className="tooltip addshadow">
                 <div></div>
                 <span>{DisplayValue}</span>
@@ -26,11 +26,13 @@ export default function Item(){
         currentItemID,
         currentSizeID,
         currentVariationID,
+        currentVariationColor,
         filteredItem,
         filteredSize,
         cartDispatch,
         currentSizeIDDispatch,
         currentVariationIDDispatch,
+        currentVariationColorDispatch,
         filteredVariationDispatch,
         productDispatch,
         setStockDispatch
@@ -39,9 +41,10 @@ export default function Item(){
     const [imgLoaded, setImgLoaded] = useState(false);
     const [imgURL, setImgURL] = useState('');
 
-    function  handleUpdate(variationID, imgURL) {
+    function  handleUpdate(variationID, imgURL, hex) {
         if(prevVariationIDRef.current !== variationID) {
-            currentVariationIDDispatch({type:"select", variationID });
+            currentVariationIDDispatch({type:"select", variation: variationID });
+            currentVariationColorDispatch({type:"select", variation: hex });
             filteredVariationDispatch({type:"filter", filteredItem, variationID });
             currentSizeIDDispatch({type:"reset", variationID });
             setImgURL(imgURL);
@@ -50,8 +53,22 @@ export default function Item(){
         }
     }
 
+    useEffect(() => {
+        if(filteredItem && filteredItem.length > 0 && !currentVariationID){
+            handleUpdate(filteredItem[0].Variations[0].VariationID,
+                baseUrl + filteredItem[0].Variations[0].Image,
+                filteredItem[0].Variations[0].Hex);
+        }
+    },);
+
     function addToCart(){
-        cartDispatch({type:"add", imgURL, currentCategoryID, currentItemID, currentVariationID, currentSizeID });
+        cartDispatch({type:"add", 
+            imgURL, 
+            hex : currentVariationColor, 
+            currentCategoryID, 
+            currentItemID, 
+            currentVariationID, 
+            currentSizeID });
         productDispatch({type:"addtocart", 
             currentCategoryID,
             currentItemID,
@@ -61,13 +78,6 @@ export default function Item(){
             quantity: 1 });
         setStockDispatch({type:"stockupdated"});
     }
-
-    useEffect(() => {
-        if(filteredItem && filteredItem.length > 0 && !currentVariationID){
-            handleUpdate(filteredItem[0].Variations[0].VariationID,
-                baseUrl + filteredItem[0].Variations[0].Image);
-        }
-    },);
 
     const currentItemInCart = useMemo(
         () => cart.filter((p) => p.currentSizeID === currentSizeID), [cart, currentSizeID]

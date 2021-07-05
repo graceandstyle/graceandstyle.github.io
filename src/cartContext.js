@@ -31,6 +31,7 @@ export function CartProvider(props) {
     const [currentItemID, currentItemIDDispatch] = useReducer(itemReducer, '');
     const [filteredItem, filteredItemDispatch] = useReducer(itemReducer, []);
     const [currentVariationID, currentVariationIDDispatch] = useReducer(variationReducer, '');
+    const [currentVariationColor, currentVariationColorDispatch] = useReducer(variationReducer, '');
     const [filteredVariation, filteredVariationDispatch] = useReducer(variationReducer, []);
     const [currentSizeID, currentSizeIDDispatch] = useReducer(sizeReducer, '');
     const [filteredSize, filteredSizeDispatch] = useReducer(sizeReducer, []);
@@ -65,6 +66,7 @@ export function CartProvider(props) {
         currentItemID,
         currentSizeID,
         currentVariationID,
+        currentVariationColor,
         filteredCategory,
         filteredItem,
         filteredSize,
@@ -76,6 +78,7 @@ export function CartProvider(props) {
         currentItemIDDispatch,
         currentSizeIDDispatch,
         currentVariationIDDispatch,
+        currentVariationColorDispatch,
         filteredCategoryDispatch,
         filteredItemDispatch,
         filteredSizeDispatch,
