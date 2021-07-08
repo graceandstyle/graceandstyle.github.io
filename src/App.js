@@ -24,7 +24,7 @@ export default function App() {
       <Item />
       <Products />
       <SocialMedia />
-      {/* <Cart /> */}
+      <Cart />
     </>
   );
 }

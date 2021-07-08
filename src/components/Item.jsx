@@ -68,7 +68,10 @@ export default function Item(){
             currentCategoryID, 
             currentItemID, 
             currentVariationID, 
-            currentSizeID });
+            currentSizeID,
+            name: filteredItem[0].DisplayValue,
+            price: filteredItem[0].Price,
+            size: filteredSize[0].DisplayValue });
         productDispatch({type:"addtocart", 
             currentCategoryID,
             currentItemID,
