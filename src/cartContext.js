@@ -26,6 +26,8 @@ export function CartProvider(props) {
     const [productsFinal, productDispatch] = useReducer(productReducer, []);
     const [stockUpdated, setStockDispatch] = useReducer(productReducer, false);
     const [cart, cartDispatch] = useReducer(cartReducer, initialCart);
+    const [cartIsToggled, cartIsToggledDispatch] = useReducer(cartReducer, false);
+    const [cartIsVisible, cartIsVisibleDispatch] = useReducer(cartReducer, false);
     const [currentCategoryID, currentCategoryIDDispatch] = useReducer(categoryReducer, '');
     const [filteredCategory, filteredCategoryDispatch] = useReducer(categoryReducer, []);
     const [currentItemID, currentItemIDDispatch] = useReducer(itemReducer, '');
@@ -62,6 +64,8 @@ export function CartProvider(props) {
   
     const contextValue = { 
         cart,
+        cartIsToggled,
+        cartIsVisible,
         currentCategoryID,
         currentItemID,
         currentSizeID,
@@ -74,6 +78,8 @@ export function CartProvider(props) {
         loading,
         productsFinal,
         cartDispatch,
+        cartIsToggledDispatch,
+        cartIsVisibleDispatch,
         currentCategoryIDDispatch,
         currentItemIDDispatch,
         currentSizeIDDispatch,

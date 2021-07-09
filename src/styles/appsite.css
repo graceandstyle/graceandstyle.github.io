@@ -15,10 +15,11 @@
   height: 900px;
   position: absolute;
   width: 900px;
-  -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-  -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-  -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-  animation: backgroundpanelfaidein 1s forwards ease-in-out;
+  -webkit-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  animation: backGroundPanelFadeIn 1s forwards ease-in-out;
 }
 
 .backgroundpanel > .backgroundellipsetopright {
@@ -49,6 +50,7 @@
   z-index: 1;
   -webkit-animation: logoIn 1s forwards ease-in-out;
   -moz-animation: logoIn 1s forwards ease-in-out;
+  -ms-animation: logoIn 1s forwards ease-in-out;
   -o-animation: logoIn 1s forwards ease-in-out;
   animation: logoIn 1s forwards ease-in-out;
 }
@@ -83,6 +85,7 @@
   height: auto;
   -webkit-animation: categoryHolderIn 1s forwards ease-in-out;
   -moz-animation: categoryHolderIn 1s forwards ease-in-out;
+  -ms-animation: categoryHolderIn 1s forwards ease-in-out;
   -o-animation: categoryHolderIn 1s forwards ease-in-out;
   animation: categoryHolderIn 1s forwards ease-in-out;
   overflow: hidden;
@@ -94,6 +97,7 @@
   cursor: pointer;
   -webkit-animation: categoryIn 1s forwards ease-in-out;
   -moz-animation: categoryIn 1s forwards ease-in-out;
+  -ms-animation: categoryIn 1s forwards ease-in-out;
   -o-animation: categoryIn 1s forwards ease-in-out;
   animation: categoryIn 1s forwards ease-in-out;
   position: relative;
@@ -152,6 +156,7 @@
   margin-right: 60px;
   -webkit-animation: categoryIn 1s forwards ease-in-out;
   -moz-animation: categoryIn 1s forwards ease-in-out;
+  -ms-animation: categoryIn 1s forwards ease-in-out;
   -o-animation: categoryIn 1s forwards ease-in-out;
   animation: categoryIn 1s forwards ease-in-out;
   -webkit-transform: translate(100%);
@@ -169,6 +174,7 @@
   opacity: 0;
   -webkit-animation: categoryHolderIn 1s forwards ease-in-out;
   -moz-animation: categoryHolderIn 1s forwards ease-in-out;
+  -ms-animation: categoryHolderIn 1s forwards ease-in-out;
   -o-animation: categoryHolderIn 1s forwards ease-in-out;
   animation: categoryHolderIn 1s forwards ease-in-out;
 }
@@ -355,6 +361,7 @@
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
   -webkit-animation: showColor 1s forwards ease-in-out;
   -moz-animation: showColor 1s forwards ease-in-out;
+  -ms-animation: showColor 1s forwards ease-in-out;
   -o-animation: showColor 1s forwards ease-in-out;
   animation: showColor 1s forwards ease-in-out;
   -webkit-transform-origin: center;
@@ -416,6 +423,7 @@
   opacity: 0.5;
   -webkit-animation: showColor 1s forwards ease-in-out;
   -moz-animation: showColor 1s forwards ease-in-out;
+  -ms-animation: showColor 1s forwards ease-in-out;
   -o-animation: showColor 1s forwards ease-in-out;
   animation: showColor 1s forwards ease-in-out;
   -webkit-transform-origin: center;
@@ -499,10 +507,11 @@
   text-align: center;
   cursor: pointer;
   font-weight: bold;
-  -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-  -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-  -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-  animation: backgroundpanelfaidein 1s forwards ease-in-out;
+  -webkit-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+  animation: backGroundPanelFadeIn 1s forwards ease-in-out;
   border: 2px solid #e6c92a;
   color: #fff;
   background-color: #e6c92a;
@@ -612,6 +621,23 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 4;
+  opacity: 0;
+}
+
+.showcartpanel {
+  -webkit-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
+  animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
+}
+
+.hidecartpanel {
+  -webkit-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
+  animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
 }
 
 .cartpanel > .cartmodal {
@@ -622,6 +648,27 @@
   height: 100%;
   background-color: #fff;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.cartpanel > .showcartmodal {
+  -webkit-animation: slideInFromRight 0.5s forwards ease-in-out;
+  -moz-animation: slideInFromRight 0.5s forwards ease-in-out;
+  -ms-animation: slideInFromRight 0.5s forwards ease-in-out;
+  -o-animation: slideInFromRight 0.5s forwards ease-in-out;
+  animation: slideInFromRight 0.5s forwards ease-in-out;
+}
+
+.cartpanel > .hidecartmodal {
+  -webkit-animation: slideOutToRight 0.5s forwards ease-in-out;
+  -moz-animation: slideOutToRight 0.5s forwards ease-in-out;
+  -ms-animation: slideOutToRight 0.5s forwards ease-in-out;
+  -o-animation: slideOutToRight 0.5s forwards ease-in-out;
+  animation: slideOutToRight 0.5s forwards ease-in-out;
 }
 
 .cartpanel > .cartmodal > header {

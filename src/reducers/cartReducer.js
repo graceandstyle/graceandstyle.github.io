@@ -9,6 +9,10 @@ export default function cartReducer(cart, action) {
                 return [...cart, { imgURL, hex, currentCategoryID, currentItemID, currentVariationID, currentSizeID, name, price, size, quantity: 1 }];
             }
         }
+        case "toggle": {
+            const { toggle } = action;
+            return toggle;
+        }
         default:
             throw new Error("Unhandled action " + action.type);
     }

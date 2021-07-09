@@ -38,39 +38,52 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
 export default function Cart() {
     const { 
         cart,
+        cartIsToggled,
+        cartIsVisible,
+        cartIsToggledDispatch,
+        cartIsVisibleDispatch,
         productsFinal
     } = useCart();
+
+    function toggleCart(toggleSwitch){
+        cartIsVisibleDispatch({type:"toggle", toggle: toggleSwitch });
+        setTimeout(function() {
+            cartIsToggledDispatch({type:"toggle", toggle: toggleSwitch });
+        }, 500);
+    }
 
     const numItemsInCart = useMemo(
         () => cart.reduce((total, item) => total + item.quantity, 0),
         [cart]
     );
 
-    return (
-        <section className="cartpanel">
-            <div className="cartmodal">
-                <header>
-                    <span><div className="fas fa-shopping-bag"></div>My Cart <span>{numItemsInCart}</span></span>
-                    <div className="closebtn">
-                        <div className="fas fa-times"></div>
-                    </div>
-                </header>
-                <div className="body">
-                    <div className="innerbody">
-
-                        {
-                            cart && cart.length > 0 && cart.map((p, i) => {
-                                return (
-                                    <RenderItems key={p.currentSizeID}
-                                    i={i}
-                                    {...p}
-                                    productsFinal={productsFinal} />
-                                )
-                            })
-                        }
+    if(cartIsToggled){
+        return (
+            <section className={cartIsVisible ? 'cartpanel showcartpanel' : 'cartpanel hidecartpanel'}>
+                <div className={cartIsVisible ? 'cartmodal showcartmodal' : 'cartmodal hidecartmodal'}>
+                    <header>
+                        <span><div className="fas fa-shopping-bag"></div>My Cart <span>{numItemsInCart}</span></span>
+                        <div className="closebtn"
+                            onClick={() => toggleCart(false) }>
+                            <div className="fas fa-times"></div>
+                        </div>
+                    </header>
+                    <div className="body">
+                        <div className="innerbody">
+                            {
+                                cart && cart.length > 0 && cart.map((p, i) => {
+                                    return (
+                                        <RenderItems key={p.currentSizeID}
+                                        i={i}
+                                        {...p}
+                                        productsFinal={productsFinal} />
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    );
+            </section>
+        );
+    } else { return <></> }
 }

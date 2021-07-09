@@ -5,10 +5,11 @@
     height: 850px;
     position: absolute;
     width: 850px;
-    -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-    -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-    -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-    animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    -webkit-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    -moz-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    -ms-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    -o-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    animation: backGroundPanelFadeIn 1s forwards ease-in-out;
   }
 
   .backgroundpanel > .backgroundellipsetopright {
@@ -42,6 +43,7 @@
     text-align: center;
     -webkit-animation: categoryHolderIn 1s forwards ease-in-out;
     -moz-animation: categoryHolderIn 1s forwards ease-in-out;
+    -ms-animation: categoryHolderIn 1s forwards ease-in-out;
     -o-animation: categoryHolderIn 1s forwards ease-in-out;
     animation: categoryHolderIn 1s forwards ease-in-out;
     overflow: unset;
@@ -61,11 +63,12 @@
     opacity: 0;
     -webkit-animation: categoryHolderIn 1s forwards ease-in-out;
     -moz-animation: categoryHolderIn 1s forwards ease-in-out;
+    -ms-animation: categoryHolderIn 1s forwards ease-in-out;
     -o-animation: categoryHolderIn 1s forwards ease-in-out;
     animation: categoryHolderIn 1s forwards ease-in-out;
     -webkit-animation-delay: 0.5s;
     -moz-animation-delay: 0.5s;
-    -moz-animation-delay: 0.5s;
+    -ms-animation-delay: 0.5s;
     -o-animation-delay: 0.5s;
     animation-delay: 0.5s;
   }
@@ -92,6 +95,7 @@
     border-radius: 30px;
     -webkit-animation: categoryIn 1s forwards ease-in-out;
     -moz-animation: categoryIn 1s forwards ease-in-out;
+    -ms-animation: categoryIn 1s forwards ease-in-out;
     -o-animation: categoryIn 1s forwards ease-in-out;
     animation: categoryIn 1s forwards ease-in-out;
     overflow: unset;
@@ -104,6 +108,7 @@
     margin-right: unset;
     -webkit-animation: unset;
     -moz-animation: unset;
+    -ms-animation: unset;
     -o-animation: unset;
     animation: unset;
     -webkit-transform: unset;
@@ -336,6 +341,7 @@
     opacity: 0.5;
     -webkit-animation: showColor 1s forwards ease-in-out;
     -moz-animation: showColor 1s forwards ease-in-out;
+    -ms-animation: showColor 1s forwards ease-in-out;
     -o-animation: showColor 1s forwards ease-in-out;
     animation: showColor 1s forwards ease-in-out;
     -webkit-transform-origin: center;
@@ -413,10 +419,11 @@
     vertical-align: middle;
     cursor: pointer;
     font-weight: bold;
-    -webkit-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-    -moz-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-    -o-animation: backgroundpanelfaidein 1s forwards ease-in-out;
-    animation: backgroundpanelfaidein 1s forwards ease-in-out;
+    -webkit-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    -moz-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    -ms-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    -o-animation: backGroundPanelFadeIn 1s forwards ease-in-out;
+    animation: backGroundPanelFadeIn 1s forwards ease-in-out;
     border: 2px solid #e6c92a;
     color: #fff;
     background-color: #e6c92a;
