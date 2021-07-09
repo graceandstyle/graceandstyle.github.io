@@ -143,6 +143,7 @@ div {
   -webkit-text-fill-color: #fff;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   z-index: 2;
@@ -171,6 +172,7 @@ div {
   top: 100%;
   -webkit-transform: translate(-50%, -30%);
   -moz-transform: translate(-50%, -30%);
+  -ms-transform: translate(-50%, -30%);
   -o-transform: translate(-50%, -30%);
   transform: translate(-50%, -30%);
   width: 0;

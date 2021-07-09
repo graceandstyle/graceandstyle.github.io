@@ -384,6 +384,10 @@
     margin: auto;
     bottom: unset;
     left: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
     transform: unset;
     margin-bottom: 30px;
     display: inline-block;

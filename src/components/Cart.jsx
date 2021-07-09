@@ -17,16 +17,14 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
             <div className="detailsholder">
                 <div className="details">
                     <span className="name">{name}</span>
-                    <span className="price">{price}</span>
-                    <span className="size">Size: {size}</span>
+                    <span className="price">P {parseInt(price.replace(/[^0-9]/g, '')) * quantity}</span>
+                    <span className="subdetails">Price: {price}</span>
+                    <span className="subdetails">Size: {size}</span>
                 </div>
                 <div className="quantitholder">
-                    {
-                        currentStock > 0 && <div className="editqty">
-                            <div className="fas fa-plus"></div>
-                        </div>
-                    }
-                    
+                    <div className="editqty" style={{ opacity: currentStock > 0 ? 1 : 0.25 }}>
+                        <div className="fas fa-plus"></div>
+                    </div>
                     <span className="quantity">{quantity}</span>
                     <div className="editqty">
                         <div className="fas fa-minus"></div>
@@ -52,7 +50,7 @@ export default function Cart() {
         <section className="cartpanel">
             <div className="cartmodal">
                 <header>
-                    <span>My Cart ({numItemsInCart})</span>
+                    <span><div className="fas fa-shopping-bag"></div>My Cart <span>{numItemsInCart}</span></span>
                     <div className="closebtn">
                         <div className="fas fa-times"></div>
                     </div>
@@ -70,32 +68,6 @@ export default function Cart() {
                                 )
                             })
                         }
-
-                        {/* <div className="item">
-                            <div className="imgholder">
-                                <div className="bg">
-                                    <div className="overlay">
-                                        <img src="http://pikarom.com/Content/Images/Products/BIRKEN/GS005BKBLUE.png" alt="GS005BK"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="detailsholder">
-                                <div className="details">
-                                    <span className="name">GS005BK</span>
-                                    <span className="price">P 300</span>
-                                    <span className="size">Size: 7</span>
-                                </div>
-                                <div className="quantitholder">
-                                    <div className="editqty">
-                                        <div className="fas fa-plus"></div>
-                                    </div>
-                                    <span className="quantity">1</span>
-                                    <div className="editqty">
-                                        <div className="fas fa-minus"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>
