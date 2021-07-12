@@ -72,7 +72,7 @@ export default function Item(){
             name: filteredItem[0].DisplayValue,
             price: filteredItem[0].Price,
             size: filteredSize[0].DisplayValue });
-        productDispatch({type:"addtocart", 
+        productDispatch({type:"updatecartquantity", 
             currentCategoryID,
             currentItemID,
             currentVariationID,
@@ -137,7 +137,7 @@ export default function Item(){
                     <div className="note">
                         {
                             (currentItemInCart && currentItemInCart.length > 0 &&  currentItemInCart[0].quantity > 0) ?
-                            'You have reached the maximum quantity available for this item' :
+                            'You have reached the maximum quantity available for this item.' :
                             'The selected size is currently unavailable. Please choose a different size or different item.'
                         }</div>
                 </button>

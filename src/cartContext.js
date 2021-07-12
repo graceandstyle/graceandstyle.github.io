@@ -49,7 +49,7 @@ export function CartProvider(props) {
         if(products && products.length > 0 && cart && cart.length > 0 && !stockUpdated) {
             cart.forEach((c) => {
                 const currentStock = products.filter((p) => p.CategoryID === c.currentCategoryID)[0].Items.filter((i) => i.ItemID === c.currentItemID)[0].Variations.filter((v) => v.VariationID === c.currentVariationID)[0].Sizes.filter((s) => s.SizeID === c.currentSizeID)[0].Stock;
-                productDispatch({type:"addtocart", 
+                productDispatch({type:"updatecartquantity", 
                     currentCategoryID: c.currentCategoryID, 
                     currentItemID: c.currentItemID, 
                     currentVariationID: c.currentVariationID, 

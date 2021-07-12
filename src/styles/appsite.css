@@ -625,19 +625,19 @@
 }
 
 .showcartpanel {
-  -webkit-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
-  -moz-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
-  -ms-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
-  -o-animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
-  animation: backGroundPanelFadeIn 0.5s forwards ease-in-out;
+  -webkit-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
 }
 
 .hidecartpanel {
-  -webkit-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
-  -moz-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
-  -ms-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
-  -o-animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
-  animation: backGroundPanelFadeOut 0.5s forwards ease-in-out;
+  -webkit-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
 }
 
 .cartpanel > .cartmodal {
@@ -656,19 +656,19 @@
 }
 
 .cartpanel > .showcartmodal {
-  -webkit-animation: slideInFromRight 0.5s forwards ease-in-out;
-  -moz-animation: slideInFromRight 0.5s forwards ease-in-out;
-  -ms-animation: slideInFromRight 0.5s forwards ease-in-out;
-  -o-animation: slideInFromRight 0.5s forwards ease-in-out;
-  animation: slideInFromRight 0.5s forwards ease-in-out;
+  -webkit-animation: slideInFromRight 0.3s forwards ease-in-out;
+  -moz-animation: slideInFromRight 0.3s forwards ease-in-out;
+  -ms-animation: slideInFromRight 0.3s forwards ease-in-out;
+  -o-animation: slideInFromRight 0.3s forwards ease-in-out;
+  animation: slideInFromRight 0.3s forwards ease-in-out;
 }
 
 .cartpanel > .hidecartmodal {
-  -webkit-animation: slideOutToRight 0.5s forwards ease-in-out;
-  -moz-animation: slideOutToRight 0.5s forwards ease-in-out;
-  -ms-animation: slideOutToRight 0.5s forwards ease-in-out;
-  -o-animation: slideOutToRight 0.5s forwards ease-in-out;
-  animation: slideOutToRight 0.5s forwards ease-in-out;
+  -webkit-animation: slideOutToRight 0.3s forwards ease-in-out;
+  -moz-animation: slideOutToRight 0.3s forwards ease-in-out;
+  -ms-animation: slideOutToRight 0.3s forwards ease-in-out;
+  -o-animation: slideOutToRight 0.3s forwards ease-in-out;
+  animation: slideOutToRight 0.3s forwards ease-in-out;
 }
 
 .cartpanel > .cartmodal > header {
@@ -885,7 +885,20 @@
   display: block;
   font-size: 15pt;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.cartpanel
+  > .cartmodal
+  > .body
+  > .innerbody
+  > .item
+  > .detailsholder
+  > .details
+  > .price
+  > sup {
+  font-size: 7pt !important;
+  font-weight: bold;
 }
 
 .cartpanel
@@ -913,6 +926,22 @@
   > .details
   > .subdetails:last-child {
   margin-right: unset;
+}
+
+.cartpanel
+  > .cartmodal
+  > .body
+  > .innerbody
+  > .item
+  > .detailsholder
+  > .details
+  > .note {
+  display: block;
+  font-size: 7pt;
+  width: calc(100% - 50px);
+  margin-top: 10px;
+  white-space: normal;
+  font-weight: bold;
 }
 
 .cartpanel
@@ -996,4 +1025,52 @@
   text-align: center;
   margin: 10px 0;
   font-size: 12pt;
+}
+
+.cartpanel > .cartmodal > footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+}
+
+.cartpanel > .cartmodal > footer > span {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.cartpanel > .cartmodal > footer > span > sup {
+  font-size: 10pt !important;
+  font-weight: bold;
+}
+
+.cartpanel > .cartmodal > footer > button {
+  background-color: #e6c92a;
+  border: none;
+  -webkit-appearance: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  border: 2px solid #e6c92a;
+}
+
+.cartpanel > .cartmodal > footer > button > div {
+  margin-right: 10px;
 }

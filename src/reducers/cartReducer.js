@@ -9,6 +9,14 @@ export default function cartReducer(cart, action) {
                 return [...cart, { imgURL, hex, currentCategoryID, currentItemID, currentVariationID, currentSizeID, name, price, size, quantity: 1 }];
             }
         }
+        case "remove": {
+            const { currentSizeID } = action;
+            return cart.filter((i) => i.currentSizeID !== currentSizeID)
+        }
+        case "subtract": {
+            const { currentSizeID } = action;
+            return cart.map((i) => i.currentSizeID === currentSizeID ? { ...i, quantity: i.quantity - 1} : i );
+        }
         case "toggle": {
             const { toggle } = action;
             return toggle;

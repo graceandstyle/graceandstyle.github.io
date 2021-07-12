@@ -472,4 +472,8 @@
   .socialmediapanel > a:last-child {
     margin-right: unset;
   }
+
+  .cartpanel > .cartmodal {
+    width: 100%;
+  }
 }
