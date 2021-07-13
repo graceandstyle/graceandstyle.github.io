@@ -74,33 +74,40 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
                     </span>
                     <span className="subdetails">Price: {price}</span>
                     <span className="subdetails">Size: {size}</span>
-                    {/* {
-                        (currentStock < 1) &&
+                    {
+                        (currentStock < 0) &&
                         <span className="note">
-                        {
-                            (quantity > 0) ?
-                            'The selected item is currently unavailable. Please remove from your cart.' :
-                            'You have reached the maximum quantity available for this item.'
-                        }
+                            The selected size is currently unavailable. Please remove it from your cart.
                         </span>
-                    } */}
+                    }
                 </div>
                 <div className="quantitholder">
-                    <div className="editqty" style={{ opacity: currentStock > 0 ? 1 : 0.25 }}
+                    <div className="editqty"
+                        style={{ 
+                            opacity: currentStock > 0 ? 1 : 0.25,
+                            visibility: (currentStock < 0) ? 'hidden' : 'unset'
+                        }}
                         onClick={() => addToCart()}>
                         <div className="fas fa-plus"></div>
                     </div>
                     <span className="quantity">{quantity}</span>
                     {
-                        (quantity > 1) ?
-                            <div className="editqty"
-                            onClick={() => subtractFromCart()}>
-                                <div className="fas fa-minus"></div>
-                            </div>
-                        : <div className="editqty"
+                        (currentStock < 0) ?
+                        <div className="editqty"
                             onClick={() => removeFromCart()}>
                             <div className="fas fa-trash"></div>
-                        </div>
+                        </div> : 
+                        (
+                            (quantity > 1) ?
+                                <div className="editqty"
+                                onClick={() => subtractFromCart()}>
+                                    <div className="fas fa-minus"></div>
+                                </div>
+                            : <div className="editqty"
+                                onClick={() => removeFromCart()}>
+                                <div className="fas fa-trash"></div>
+                            </div>
+                        )
                     }
                 </div>
             </div>

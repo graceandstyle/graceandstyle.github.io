@@ -479,6 +479,12 @@
   transform: translateX(-50%);
   white-space: nowrap;
   font-size: 9pt;
+  cursor: pointer;
+}
+
+.itempanel > .currentitemincart:hover {
+  background-color: #e6c92a;
+  color: #fff;
 }
 
 .itempanel > .currentitemincart > * {

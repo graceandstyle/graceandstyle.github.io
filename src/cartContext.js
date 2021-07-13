@@ -43,12 +43,13 @@ export function CartProvider(props) {
 
     useEffect(() => {
         productDispatch({type:"initialize", productData: error ? fallbackProducts : products });
+        //productDispatch({type:"initialize", productData: fallbackProducts });
     },[products, error]);
 
     useEffect(() => {
-        if(products && products.length > 0 && cart && cart.length > 0 && !stockUpdated) {
+        if(productsFinal && productsFinal.length > 0 && cart && cart.length > 0 && !stockUpdated) {
             cart.forEach((c) => {
-                const currentStock = products.filter((p) => p.CategoryID === c.currentCategoryID)[0].Items.filter((i) => i.ItemID === c.currentItemID)[0].Variations.filter((v) => v.VariationID === c.currentVariationID)[0].Sizes.filter((s) => s.SizeID === c.currentSizeID)[0].Stock;
+                const currentStock = productsFinal.filter((p) => p.CategoryID === c.currentCategoryID)[0].Items.filter((i) => i.ItemID === c.currentItemID)[0].Variations.filter((v) => v.VariationID === c.currentVariationID)[0].Sizes.filter((s) => s.SizeID === c.currentSizeID)[0].Stock;
                 productDispatch({type:"updatecartquantity", 
                     currentCategoryID: c.currentCategoryID, 
                     currentItemID: c.currentItemID, 
@@ -60,7 +61,7 @@ export function CartProvider(props) {
             });
             setStockDispatch({type:"stockupdated"});
         }
-    },[products, cart, stockUpdated]);
+    },[productsFinal, cart, stockUpdated]);
   
     const contextValue = { 
         cart,

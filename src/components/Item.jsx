@@ -30,6 +30,8 @@ export default function Item(){
         filteredItem,
         filteredSize,
         cartDispatch,
+        cartIsToggledDispatch,
+        cartIsVisibleDispatch,
         currentSizeIDDispatch,
         currentVariationIDDispatch,
         currentVariationColorDispatch,
@@ -40,6 +42,15 @@ export default function Item(){
     const prevVariationIDRef = useRef('');
     const [imgLoaded, setImgLoaded] = useState(false);
     const [imgURL, setImgURL] = useState('');
+
+    const numItemsInCart = useMemo(
+        () => cart.reduce((total, item) => total + item.quantity, 0),
+        [cart]
+    );
+
+    const currentItemInCart = useMemo(
+        () => cart.filter((p) => p.currentSizeID === currentSizeID), [cart, currentSizeID]
+    );
 
     function  handleUpdate(variationID, imgURL, hex) {
         if(prevVariationIDRef.current !== variationID) {
@@ -82,9 +93,12 @@ export default function Item(){
         setStockDispatch({type:"stockupdated"});
     }
 
-    const currentItemInCart = useMemo(
-        () => cart.filter((p) => p.currentSizeID === currentSizeID), [cart, currentSizeID]
-    );
+    function toggleCart(toggleSwitch){
+        if(numItemsInCart !== 0){
+            cartIsToggledDispatch({type:"toggle", toggle: toggleSwitch });
+            cartIsVisibleDispatch({type:"toggle", toggle: toggleSwitch });
+        }
+    }
 
     return (
         <section className={ filteredSize.length && filteredSize[0].Stock > 0
@@ -119,7 +133,12 @@ export default function Item(){
             </div>
             {
                 currentItemInCart && currentItemInCart.length > 0 &&  currentItemInCart[0].quantity > 0 &&
-                <div className="currentitemincart">
+                <div className="currentitemincart"
+                    onClick={() => toggleCart(true) }>
+                    {
+                        (filteredSize.length && filteredSize[0].Stock < 0) &&
+                        <div className="fas fa-exclamation-triangle"></div>
+                    }
                     <div className="fas fa-shopping-bag"></div>
                     <span>{currentItemInCart[0].quantity}</span>
                 </div>
@@ -137,7 +156,9 @@ export default function Item(){
                     <div className="note">
                         {
                             (currentItemInCart && currentItemInCart.length > 0 &&  currentItemInCart[0].quantity > 0) ?
-                            'You have reached the maximum quantity available for this item.' :
+                            ((filteredSize.length && filteredSize[0].Stock < 0) ?
+                            'The selected size is currently unavailable. Please remove it from your cart.' : 
+                            'You have reached the maximum quantity available for this item.') :
                             'The selected size is currently unavailable. Please choose a different size or different item.'
                         }</div>
                 </button>
