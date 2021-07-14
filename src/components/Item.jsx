@@ -115,7 +115,6 @@ export default function Item(){
                         onLoad={() => setImgLoaded(true)} />
                 }
             </div>
-            <Sizes />
             <div className="colorpanel">
                 {   filteredItem && filteredItem.length > 0 && filteredItem[0].Variations.map((p, i) => {
                     return (
@@ -126,6 +125,7 @@ export default function Item(){
                     )
                 })}
             </div>
+            <Sizes />
             <div className="detailsholder">
                 <span className="trademark">GRACE &amp;STYLE</span>
                 <span className="itemname">{filteredItem && filteredItem.length > 0 && filteredItem[0].DisplayValue}</span>

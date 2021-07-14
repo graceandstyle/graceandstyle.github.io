@@ -309,7 +309,6 @@
     -o-transform: unset;
     transform: unset;
     bottom: unset;
-    margin-bottom: 10px;
   }
 
   .itempanel > .colorpanel {
@@ -327,6 +326,7 @@
     -o-transform: unset;
     transform: unset;
     bottom: unset;
+    margin-bottom: 10px;
   }
 
   .itempanel > .colorpanel > .colorbox {
@@ -458,5 +458,28 @@
 
   .socialmediapanel > a:last-child {
     margin-right: unset;
+  }
+
+  .cartpanel > .cartmodal > footer > button {
+    background-color: #e6c92a;
+    border: none;
+    -webkit-appearance: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #fff;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    border: 2px solid #e6c92a;
+    font-size: 12pt;
+    height: 50px;
   }
 }
