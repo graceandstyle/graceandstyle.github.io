@@ -166,7 +166,7 @@ export default function Cart() {
             <section className={cartIsVisible ? 'cartpanel showcartpanel' : 'cartpanel hidecartpanel'}>
                 <div className={cartIsVisible ? 'cartmodal showcartmodal' : 'cartmodal hidecartmodal'}>
                     <header>
-                        <span><div className="fas fa-shopping-bag"></div>My Cart <span>{numItemsInCart}</span></span>
+                        <span><div className="fas fa-shopping-bag"></div>My Basket <span>{numItemsInCart}</span></span>
                         <div className="closebtn"
                             onClick={() => toggleCart(false) }>
                             <div className="fas fa-times"></div>

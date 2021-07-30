@@ -241,6 +241,7 @@
     padding: 30px;
     top: unset;
     left: unset;
+    text-align: center;
   }
 
   .itempanel > .detailsholder > span {

@@ -127,7 +127,7 @@ export default function Item(){
             </div>
             <Sizes />
             <div className="detailsholder">
-                <span className="trademark">GRACE &amp;STYLE</span>
+                <span className="trademark">GRACE &amp; STYLE</span>
                 <span className="itemname">{filteredItem && filteredItem.length > 0 && filteredItem[0].DisplayValue}</span>
                 <span className="itemprice">{filteredItem && filteredItem.length > 0 && filteredItem[0].Price}</span>
             </div>
@@ -148,7 +148,7 @@ export default function Item(){
                 <button className="addtocartbtn"
                     onClick={() => addToCart() }>
                     <div className="fas fa-plus primaryicon"></div>
-                    <span>ADD TO CART</span>
+                    <span>ADD TO BASKET</span>
                 </button> :
                 <button className="addtocartbtn outofstock">
                     <div className="fas fa-ban primaryicon"></div>

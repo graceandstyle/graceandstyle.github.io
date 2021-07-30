@@ -284,6 +284,7 @@
   top: 100px;
   left: 15%;
   z-index: 1;
+  text-align: left;
 }
 
 .itempanel > .detailsholder > span {
@@ -335,7 +336,7 @@
 }
 
 .itempanel > .imgholder > img {
-  height: 100%;
+  height: 80%;
   opacity: 0;
   z-index: 0;
 }
