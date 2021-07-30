@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useCart } from "../cartContext";
 
 function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, currentVariationID, currentSizeID, name, price, size, quantity, productsFinal }) {
 
     const { 
         cartDispatch,
+        cartHasErrorDispatch,
         productDispatch
     } = useCart();
 
@@ -21,14 +22,15 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
                 currentSizeID,
                 name,
                 price,
-                size });
+                size 
+            });
             productDispatch({type:"updatecartquantity", 
                 currentCategoryID,
                 currentItemID,
                 currentVariationID,
                 currentSizeID,
-                currentStock,
-                quantity: 1 });
+                currentStock: currentStock - 1
+            });
         }
     }
 
@@ -40,8 +42,10 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
             currentItemID,
             currentVariationID,
             currentSizeID,
-            currentStock,
-            quantity: -1 });
+            currentStock: currentStock + quantity
+        });
+        cartHasErrorDispatch({type:"remove", 
+            currentSizeID });
     }
 
     function subtractFromCart(){
@@ -52,9 +56,15 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
             currentItemID,
             currentVariationID,
             currentSizeID,
-            currentStock,
-            quantity: -1 });
+            currentStock: currentStock + 1
+        });
     }
+
+    useEffect(() => {
+        if(currentStock < 0){
+            cartHasErrorDispatch({type: "addError", currentSizeID });
+        }
+    }, [currentStock, cartHasErrorDispatch, currentSizeID]);
 
     return (
         <div className="item">
@@ -77,19 +87,27 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
                     {
                         (currentStock < 0) &&
                         <span className="note">
-                            The selected size is currently unavailable. Please remove it from your cart.
+                            The selected size is currently unavailable.<br/>Please remove it from your cart.
                         </span>
                     }
                 </div>
                 <div className="quantitholder">
-                    <div className="editqty"
-                        style={{ 
-                            opacity: currentStock > 0 ? 1 : 0.25,
-                            visibility: (currentStock < 0) ? 'hidden' : 'unset'
-                        }}
-                        onClick={() => addToCart()}>
-                        <div className="fas fa-plus"></div>
-                    </div>
+                    {
+                        (currentStock < 0) &&
+                        <div className="alert">
+                            <div className="fas fa-exclamation-triangle"></div>
+                        </div>
+                    }
+                    {
+                        (currentStock >= 0) && 
+                        <div className="editqty"
+                            style={{ 
+                                opacity: currentStock > 0 ? 1 : 0.25
+                            }}
+                            onClick={() => addToCart()}>
+                            <div className="fas fa-plus"></div>
+                        </div>
+                    }
                     <span className="quantity">{quantity}</span>
                     {
                         (currentStock < 0) ?
@@ -118,6 +136,7 @@ function RenderItems({ i, imgURL, hex, currentCategoryID, currentItemID, current
 export default function Cart() {
     const { 
         cart,
+        cartHasError,
         cartIsToggled,
         cartIsVisible,
         productsFinal,
@@ -174,6 +193,11 @@ export default function Cart() {
                         </span>
                         {
                             numItemsInCart > 0 &&
+                            (cartHasError.length > 0) ?
+                            <button style={{cursor:'not-allowed'}}>
+                                <div className="fas fa-ban"></div>
+                                PLEASE CHECK YOUR CART
+                            </button> : 
                             <button>
                                 <div className="fas fa-check"></div>
                                 CHECK OUT

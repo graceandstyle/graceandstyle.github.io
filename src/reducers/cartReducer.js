@@ -9,6 +9,15 @@ export default function cartReducer(cart, action) {
                 return [...cart, { imgURL, hex, currentCategoryID, currentItemID, currentVariationID, currentSizeID, name, price, size, quantity: 1 }];
             }
         }
+        case "addError": {
+            const { currentSizeID } = action;
+            const itemInCart = cart.find((i) => i.currentSizeID === currentSizeID);
+            if(itemInCart) {
+                return cart;
+            } else {
+                return [...cart, { currentSizeID }];
+            }
+        }
         case "remove": {
             const { currentSizeID } = action;
             return cart.filter((i) => i.currentSizeID !== currentSizeID)

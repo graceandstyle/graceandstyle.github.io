@@ -9,8 +9,6 @@ import SocialMedia from './components/SocialMedia';
 import Cart from './components/Cart';
 import { useCart } from "./cartContext";
 
-
-
 export default function App() {
   const { loading } = useCart();
 

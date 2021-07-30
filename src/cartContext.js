@@ -26,6 +26,7 @@ export function CartProvider(props) {
     const [productsFinal, productDispatch] = useReducer(productReducer, []);
     const [stockUpdated, setStockDispatch] = useReducer(productReducer, false);
     const [cart, cartDispatch] = useReducer(cartReducer, initialCart);
+    const [cartHasError, cartHasErrorDispatch] = useReducer(cartReducer, []);
     const [cartIsToggled, cartIsToggledDispatch] = useReducer(cartReducer, false);
     const [cartIsVisible, cartIsVisibleDispatch] = useReducer(cartReducer, false);
     const [currentCategoryID, currentCategoryIDDispatch] = useReducer(categoryReducer, '');
@@ -49,15 +50,18 @@ export function CartProvider(props) {
     useEffect(() => {
         if(productsFinal && productsFinal.length > 0 && cart && cart.length > 0 && !stockUpdated) {
             cart.forEach((c) => {
-                const currentStock = productsFinal.filter((p) => p.CategoryID === c.currentCategoryID)[0].Items.filter((i) => i.ItemID === c.currentItemID)[0].Variations.filter((v) => v.VariationID === c.currentVariationID)[0].Sizes.filter((s) => s.SizeID === c.currentSizeID)[0].Stock;
+                let currentStock = productsFinal.filter((p) => p.CategoryID === c.currentCategoryID)[0].Items.filter((i) => i.ItemID === c.currentItemID)[0].Variations.filter((v) => v.VariationID === c.currentVariationID)[0].Sizes.filter((s) => s.SizeID === c.currentSizeID)[0].Stock;
+                currentStock = currentStock - c.quantity;
                 productDispatch({type:"updatecartquantity", 
                     currentCategoryID: c.currentCategoryID, 
                     currentItemID: c.currentItemID, 
                     currentVariationID: c.currentVariationID, 
                     currentSizeID: c.currentSizeID,
-                    currentStock,
-                    quantity: c.quantity 
+                    currentStock
                 });
+                if(currentStock < 0){
+                    cartHasErrorDispatch({type: "addError", currentSizeID: c.currentSizeID });
+                }
             });
             setStockDispatch({type:"stockupdated"});
         }
@@ -65,6 +69,7 @@ export function CartProvider(props) {
   
     const contextValue = { 
         cart,
+        cartHasError,
         cartIsToggled,
         cartIsVisible,
         currentCategoryID,
@@ -79,6 +84,7 @@ export function CartProvider(props) {
         loading,
         productsFinal,
         cartDispatch,
+        cartHasErrorDispatch,
         cartIsToggledDispatch,
         cartIsVisibleDispatch,
         currentCategoryIDDispatch,

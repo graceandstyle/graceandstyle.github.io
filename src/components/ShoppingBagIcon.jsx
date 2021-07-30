@@ -4,6 +4,7 @@ import { useCart } from "../cartContext";
 export default function ShoppingBagIcon() {
     const { 
         cart,
+        cartHasError,
         cartIsToggledDispatch,
         cartIsVisibleDispatch
      } = useCart();
@@ -25,7 +26,10 @@ export default function ShoppingBagIcon() {
                 'shoppingbagiconpanel' :
                 'shoppingbagiconpanel noitem' }
                 onClick={() => toggleCart(true) }>
-            { numItemsInCart !== 0 && <div className="indicator"></div> }
+            { numItemsInCart !== 0 && 
+                <div className="indicator"
+                    style={{ backgroundColor: cartHasError && cartHasError.length > 0 ?
+                    '#f00' : '#e6c92a' }}></div> }
             <div className="fas fa-shopping-bag shopicon"></div>
         </section>
     );    

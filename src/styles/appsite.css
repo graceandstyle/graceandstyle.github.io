@@ -762,7 +762,7 @@
 
 .cartpanel > .cartmodal > .body > .innerbody > .item {
   width: 100%;
-  height: 120px;
+  height: 140px;
   background-color: #fff;
   border-radius: 20px;
   position: relative;
@@ -1007,7 +1007,42 @@
   > .item
   > .detailsholder
   > .quantitholder
+  > .alert {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: #f00;
+  color: #fff;
+}
+
+.cartpanel
+  > .cartmodal
+  > .body
+  > .innerbody
+  > .item
+  > .detailsholder
+  > .quantitholder
   > .editqty
+  > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.cartpanel
+  > .cartmodal
+  > .body
+  > .innerbody
+  > .item
+  > .detailsholder
+  > .quantitholder
+  > .alert
   > div {
   position: absolute;
   top: 50%;

@@ -88,8 +88,8 @@ export default function Item(){
             currentItemID,
             currentVariationID,
             currentSizeID,
-            currentStock: filteredSize[0].Stock,
-            quantity: 1 });
+            currentStock: filteredSize[0].Stock - 1
+        });
         setStockDispatch({type:"stockupdated"});
     }
 
@@ -110,7 +110,7 @@ export default function Item(){
                 {
                     filteredItem && filteredItem.length > 0 &&
                     <img src={imgURL}
-                        style={imgLoaded ? {opacity: 1} : {}}
+                        style={imgLoaded ? {opacity: filteredSize[0].Stock < 1 ? 0.5 : 1} : {}}
                         alt={filteredItem[0].DisplayValue}
                         onLoad={() => setImgLoaded(true)} />
                 }
@@ -137,7 +137,7 @@ export default function Item(){
                     onClick={() => toggleCart(true) }>
                     {
                         (filteredSize.length && filteredSize[0].Stock < 0) &&
-                        <div className="fas fa-exclamation-triangle"></div>
+                        <div className="fas fa-exclamation-triangle" style={{color:'#f00'}}></div>
                     }
                     <div className="fas fa-shopping-bag"></div>
                     <span>{currentItemInCart[0].quantity}</span>
