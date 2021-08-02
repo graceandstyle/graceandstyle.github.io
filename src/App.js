@@ -7,6 +7,7 @@ import Item from './components/Item';
 import ShoppingBagIcon from './components/ShoppingBagIcon';
 import SocialMedia from './components/SocialMedia';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import { useCart } from "./cartContext";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
       <Products />
       <SocialMedia />
       <Cart />
+      <Checkout />
     </>
   );
 }

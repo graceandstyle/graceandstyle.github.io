@@ -93,10 +93,10 @@ export default function Item(){
         setStockDispatch({type:"stockupdated"});
     }
 
-    function toggleCart(toggleSwitch){
+    function toggleCart(){
         if(numItemsInCart !== 0){
-            cartIsToggledDispatch({type:"toggle", toggle: toggleSwitch });
-            cartIsVisibleDispatch({type:"toggle", toggle: toggleSwitch });
+            cartIsToggledDispatch({type:"toggle", toggle: true });
+            cartIsVisibleDispatch({type:"toggle", toggle: true });
         }
     }
 
@@ -134,7 +134,7 @@ export default function Item(){
             {
                 currentItemInCart && currentItemInCart.length > 0 &&  currentItemInCart[0].quantity > 0 &&
                 <div className="currentitemincart"
-                    onClick={() => toggleCart(true) }>
+                    onClick={() => toggleCart() }>
                     {
                         (filteredSize.length && filteredSize[0].Stock < 0) &&
                         <div className="fas fa-exclamation-triangle" style={{color:'#f00'}}></div>

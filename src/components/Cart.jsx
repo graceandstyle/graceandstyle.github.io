@@ -141,14 +141,26 @@ export default function Cart() {
         cartIsVisible,
         productsFinal,
         cartIsToggledDispatch,
-        cartIsVisibleDispatch
+        cartIsVisibleDispatch,
+        checkoutIsToggledDispatch,
+        checkoutIsVisibleDispatch,
     } = useCart();
 
-    function toggleCart(toggleSwitch){
-        cartIsVisibleDispatch({type:"toggle", toggle: toggleSwitch });
+    function toggleCart(){
+        cartIsVisibleDispatch({type:"toggle", toggle: false });
         setTimeout(function() {
-            cartIsToggledDispatch({type:"toggle", toggle: toggleSwitch });
+            cartIsToggledDispatch({type:"toggle", toggle: false });
         }, 300);
+    }
+
+    function toggleCheckout(){
+        if(numItemsInCart !== 0){
+            toggleCart();
+            setTimeout(function() {
+                checkoutIsToggledDispatch({type:"toggle", toggle: true });
+                checkoutIsVisibleDispatch({type:"toggle", toggle: true });
+            }, 300);
+        }
     }
 
     const numItemsInCart = useMemo(
@@ -168,7 +180,7 @@ export default function Cart() {
                     <header>
                         <span><div className="fas fa-shopping-bag"></div>My Basket <span>{numItemsInCart}</span></span>
                         <div className="closebtn"
-                            onClick={() => toggleCart(false) }>
+                            onClick={() => toggleCart(false)}>
                             <div className="fas fa-times"></div>
                         </div>
                     </header>
@@ -201,7 +213,8 @@ export default function Cart() {
                         {
                             numItemsInCart > 0 &&
                             <button style={(cartHasError.length > 0) ?
-                                {cursor:'not-allowed',opacity:0.5} : {}}>
+                                {cursor:'not-allowed',opacity:0.5} : {}}
+                                onClick={() => toggleCheckout(false)}>
                                 <div className="fas fa-ban"></div>
                                 CHECK OUT
                             </button>

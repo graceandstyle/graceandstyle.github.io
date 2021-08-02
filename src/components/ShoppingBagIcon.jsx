@@ -9,10 +9,10 @@ export default function ShoppingBagIcon() {
         cartIsVisibleDispatch
      } = useCart();
 
-    function toggleCart(toggleSwitch){
+    function toggleCart(){
         if(numItemsInCart !== 0){
-            cartIsToggledDispatch({type:"toggle", toggle: toggleSwitch });
-            cartIsVisibleDispatch({type:"toggle", toggle: toggleSwitch });
+            cartIsToggledDispatch({type:"toggle", toggle: true });
+            cartIsVisibleDispatch({type:"toggle", toggle: true });
         }
     }
 
@@ -25,7 +25,7 @@ export default function ShoppingBagIcon() {
         <section className={ numItemsInCart !== 0 ?
                 'shoppingbagiconpanel' :
                 'shoppingbagiconpanel noitem' }
-                onClick={() => toggleCart(true) }>
+                onClick={() => toggleCart() }>
             { numItemsInCart !== 0 && 
                 <div className="indicator"
                     style={{ backgroundColor: cartHasError && cartHasError.length > 0 ?

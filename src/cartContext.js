@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect, useContext } from "react";
 import cartReducer from "./reducers/cartReducer";
 import categoryReducer from "./reducers/categoryReducer";
+import checkoutReducer from "./reducers/checkoutReducer";
 import itemReducer from "./reducers/itemReducer";
 import productReducer from "./reducers/productReducer";
 import sizeReducer from "./reducers/sizeReducer";
@@ -29,6 +30,8 @@ export function CartProvider(props) {
     const [cartHasError, cartHasErrorDispatch] = useReducer(cartReducer, []);
     const [cartIsToggled, cartIsToggledDispatch] = useReducer(cartReducer, false);
     const [cartIsVisible, cartIsVisibleDispatch] = useReducer(cartReducer, false);
+    const [checkoutIsToggled, checkoutIsToggledDispatch] = useReducer(checkoutReducer, false);
+    const [checkoutIsVisible, checkoutIsVisibleDispatch] = useReducer(checkoutReducer, false);
     const [currentCategoryID, currentCategoryIDDispatch] = useReducer(categoryReducer, '');
     const [filteredCategory, filteredCategoryDispatch] = useReducer(categoryReducer, []);
     const [currentItemID, currentItemIDDispatch] = useReducer(itemReducer, '');
@@ -72,6 +75,8 @@ export function CartProvider(props) {
         cartHasError,
         cartIsToggled,
         cartIsVisible,
+        checkoutIsToggled,
+        checkoutIsVisible,
         currentCategoryID,
         currentItemID,
         currentSizeID,
@@ -87,6 +92,8 @@ export function CartProvider(props) {
         cartHasErrorDispatch,
         cartIsToggledDispatch,
         cartIsVisibleDispatch,
+        checkoutIsToggledDispatch,
+        checkoutIsVisibleDispatch,
         currentCategoryIDDispatch,
         currentItemIDDispatch,
         currentSizeIDDispatch,

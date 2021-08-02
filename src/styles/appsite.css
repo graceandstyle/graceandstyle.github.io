@@ -1136,3 +1136,144 @@
 .cartpanel > .cartmodal > footer > button > div {
   margin-right: 10px;
 }
+
+.checkoutpanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+  opacity: 0;
+}
+
+.showcheckoutpanel {
+  -webkit-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+  animation: backGroundPanelFadeIn 0.3s forwards ease-in-out;
+}
+
+.hidecheckoutpanel {
+  -webkit-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  -moz-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  -ms-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  -o-animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+  animation: backGroundPanelFadeOut 0.3s forwards ease-in-out;
+}
+
+.checkoutpanel > .checkoutmodal {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 450px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.checkoutpanel > .showcheckoutmodal {
+  -webkit-animation: slideInFromRight 0.3s forwards ease-in-out;
+  -moz-animation: slideInFromRight 0.3s forwards ease-in-out;
+  -ms-animation: slideInFromRight 0.3s forwards ease-in-out;
+  -o-animation: slideInFromRight 0.3s forwards ease-in-out;
+  animation: slideInFromRight 0.3s forwards ease-in-out;
+}
+
+.checkoutpanel > .hidecheckoutmodal {
+  -webkit-animation: slideOutToRight 0.3s forwards ease-in-out;
+  -moz-animation: slideOutToRight 0.3s forwards ease-in-out;
+  -ms-animation: slideOutToRight 0.3s forwards ease-in-out;
+  -o-animation: slideOutToRight 0.3s forwards ease-in-out;
+  animation: slideOutToRight 0.3s forwards ease-in-out;
+}
+
+.checkoutpanel > .checkoutmodal > header {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.checkoutpanel > .checkoutmodal > header > span {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 15pt;
+  font-weight: bold;
+}
+
+.checkoutpanel > .checkoutmodal > header > span > div {
+  display: inline-block;
+  font-size: 20pt;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.checkoutpanel > .checkoutmodal > header > span > span {
+  display: inline-block;
+  font-size: 9pt;
+  vertical-align: middle;
+  margin-left: 10px;
+  background-color: #e6c92a;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.checkoutpanel > .checkoutmodal > header > .closebtn {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  font-size: 15pt;
+  cursor: pointer;
+}
+
+.checkoutpanel > .checkoutmodal > header > .closebtn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.checkoutpanel > .checkoutmodal > header > .closebtn > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.checkoutpanel > .checkoutmodal > .body {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 100px);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.checkoutpanel > .checkoutmodal > .body > .innerbody {
+  position: relative;
+  width: calc(100% - 40px);
+  height: calc(100% - 170px);
+  overflow-y: auto;
+  padding: 20px 20px 50px 20px;
+}
