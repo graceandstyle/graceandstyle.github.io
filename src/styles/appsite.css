@@ -1078,6 +1078,26 @@
   background-color: #fff;
 }
 
+.cartpanel > .cartmodal > footer > .errorbanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: #f00;
+  color: #fff;
+  padding: 10px 15px;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.cartpanel > .cartmodal > footer > .errorbanner > div {
+  margin-right: 10px;
+}
+
 .cartpanel > .cartmodal > footer > span {
   position: absolute;
   top: 50%;

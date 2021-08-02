@@ -187,19 +187,22 @@ export default function Cart() {
                         </div>
                     </div>
                     <footer>
+                        {
+                            cartHasError.length > 0 &&
+                            <div className="errorbanner">
+                                <div class="fas fa-exclamation-triangle"></div>
+                                Please check your basket
+                            </div>
+                        }
                         <span>
                             <sup>P</sup>
                             {currentTotalPrice}
                         </span>
                         {
                             numItemsInCart > 0 &&
-                            (cartHasError.length > 0) ?
-                            <button style={{cursor:'not-allowed'}}>
+                            <button style={(cartHasError.length > 0) ?
+                                {cursor:'not-allowed',opacity:0.5} : {}}>
                                 <div className="fas fa-ban"></div>
-                                PLEASE CHECK YOUR CART
-                            </button> : 
-                            <button>
-                                <div className="fas fa-check"></div>
                                 CHECK OUT
                             </button>
                         }
