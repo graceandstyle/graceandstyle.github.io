@@ -1393,7 +1393,7 @@
   font-weight: bold;
 }
 
-.checkoutpanel > .checkoutmodal > footer > button {
+.checkoutpanel > .checkoutmodal > footer > .upload {
   background-color: #e6c92a;
   border: none;
   -webkit-appearance: none;
@@ -1414,6 +1414,10 @@
   border: 2px solid #e6c92a;
 }
 
-.checkoutpanel > .checkoutmodal > footer > button > div {
+.checkoutpanel > .checkoutmodal > footer > .upload > div {
   margin-right: 10px;
+}
+
+.checkoutpanel > .checkoutmodal > footer > .upload > input[type="file"] {
+  display: none;
 }

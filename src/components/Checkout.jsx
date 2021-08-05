@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { useCart } from "../cartContext";
 const qrUrl = process.env.REACT_APP_QR_URL;
 
@@ -28,11 +28,13 @@ export default function Cart() {
         [cart]
     );
 
-    const hasError = customerInfo.firstName.split(' ').join('').length === 0 ||
+    const hasError = (customerInfo.firstName.split(' ').join('').length === 0 ||
                     customerInfo.lastName.split(' ').join('').length < 2 ||
                     customerInfo.contactNumber.split(' ').join('').length < 7 ||
                     customerInfo.email.split(' ').join('').length < 5 ||
-                    customerInfo.address.split(' ').join('').length < 10
+                    customerInfo.address.split(' ').join('').length < 10);
+
+    const fileField = useRef(null);
 
     function toggleCheckout(){
         checkoutIsVisibleDispatch({type:"toggle", toggle: false });
@@ -61,7 +63,7 @@ export default function Cart() {
     }
 
     function uploadReceipt() {
-        alert('uploaded');
+        fileField.current.click();
     }
 
     if(checkoutIsToggled){
@@ -85,7 +87,7 @@ export default function Cart() {
                                 </ul>
                             </div>
                             <div className="field">
-                                <span>Scan the QR Code via GCASH App to pay:</span>
+                                <span>Click the QR Code and scan via GCASH App to pay:</span>
                                 <a href={qrUrl}
                                     rel="noreferrer" target="_blank">
                                     <img src={qrUrl} 
@@ -161,12 +163,15 @@ export default function Cart() {
                             {currentTotalPrice}
                         </span>
                         {
-                            <button style={hasError ?
+                            <div 
+                                className="upload"
+                                style={hasError ?
                                 {cursor:'not-allowed',opacity:0.5} : {}}
                                 onClick={() => uploadReceipt()}>
                                 <div className="fas fa-upload"></div>
                                 PROOF OF PAYMENT
-                            </button>
+                                <input type="file" ref={fileField} />
+                            </div>
                         }
                     </footer>
                 </div>
