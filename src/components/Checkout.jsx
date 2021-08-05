@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useCart } from "../cartContext";
+const qrUrl = process.env.REACT_APP_QR_URL;
+
+const emptyCustomerInfo = {
+    firstName: "",
+    lastName: "",
+    contactNumber: "",
+    email: "",
+    address: ""
+};
 
 export default function Cart() {
     const {
+        cart,
         checkoutIsToggled,
         checkoutIsVisible,
         cartIsToggledDispatch,
@@ -10,6 +20,19 @@ export default function Cart() {
         checkoutIsToggledDispatch,
         checkoutIsVisibleDispatch
     } = useCart();
+
+    const [customerInfo, setCustomerInfo] = useState(emptyCustomerInfo);
+
+    const currentTotalPrice = useMemo(
+        () => cart.reduce((total, item) => total + (item.quantity * parseFloat(item.price.replace(/[^0-9]/g, ''))), 0),
+        [cart]
+    );
+
+    const hasError = customerInfo.firstName.split(' ').join('').length === 0 ||
+                    customerInfo.lastName.split(' ').join('').length < 2 ||
+                    customerInfo.contactNumber.split(' ').join('').length < 7 ||
+                    customerInfo.email.split(' ').join('').length < 5 ||
+                    customerInfo.address.split(' ').join('').length < 10
 
     function toggleCheckout(){
         checkoutIsVisibleDispatch({type:"toggle", toggle: false });
@@ -26,6 +49,21 @@ export default function Cart() {
         }, 300);
     }
 
+    function handleChange(e) {
+        e.persist();
+        setCustomerInfo((curCustomer) => {
+            return {
+            ...curCustomer,
+            [e.target.id]: e.target.value,
+            }
+        })
+        console.log(customerInfo);
+    }
+
+    function uploadReceipt() {
+        alert('uploaded');
+    }
+
     if(checkoutIsToggled){
         return (
             <section className={checkoutIsVisible ? 'checkoutpanel showcheckoutpanel' : 'checkoutpanel hidecheckoutpanel'}>
@@ -39,15 +77,83 @@ export default function Cart() {
                     </header>
                     <div className="body">
                         <div className="innerbody">
-                            
+                            <div className="notice">
+                                <ul>
+                                    <li>Please be aware that the following information will be provided to LBC for delivery.</li>
+                                    <li>Shipping fee is not included on the total price of the item/s.</li>
+                                    <li>Shipping fee will be paid by the customer upon pick-up on the nearest/preferred LBC branch.</li>
+                                </ul>
+                            </div>
+                            <div className="field">
+                                <span>Scan the QR Code via GCASH App to pay:</span>
+                                <a href={qrUrl}
+                                    rel="noreferrer" target="_blank">
+                                    <img src={qrUrl} 
+                                    alt="GCAHSQR" />
+                                </a>
+                            </div>
+                            <div className="field">
+                                <span>First Name:</span>
+                                <input
+                                    id="firstName" 
+                                    type="text"
+                                    placeholder="Juan" 
+                                    value={customerInfo.firstName}
+                                    onChange={handleChange}
+                                    autoComplete={'' + Math.random()}></input>
+                            </div>
+                            <div className="field">
+                                <span>Last Name:</span>
+                                <input
+                                    id="lastName" 
+                                    type="text"
+                                    placeholder="Dela Cruz" 
+                                    value={customerInfo.lastName}
+                                    onChange={handleChange}
+                                    autoComplete={'' + Math.random()}></input>
+                            </div>
+                            <div className="field">
+                                <span>Contact Number:</span>
+                                <input
+                                    id="contactNumber" 
+                                    type="text"
+                                    placeholder="09876543210" 
+                                    value={customerInfo.contactNumber}
+                                    onChange={handleChange}
+                                    autoComplete={'' + Math.random()}></input>
+                            </div>
+                            <div className="field">
+                                <span>Email:</span>
+                                <input
+                                    id="email" 
+                                    type="text"
+                                    placeholder="juandelacruz@email.com" 
+                                    value={customerInfo.email}
+                                    onChange={handleChange}
+                                    autoComplete={'' + Math.random()}></input>
+                            </div>
+                            <div className="field">
+                                <span>Nearest LBC Branch Address:</span>
+                                <input
+                                    id="address" 
+                                    type="text"
+                                    placeholder="2F Waltermart, Balibago, Sta. Rosa, Laguna" 
+                                    value={customerInfo.address}
+                                    onChange={handleChange}
+                                    autoComplete={'' + Math.random()}></input>
+                            </div>
                         </div>
                     </div>
-                    {/* <footer>
+                    <footer>
                         {
-                            cartHasError.length > 0 &&
+                            hasError ?
                             <div className="errorbanner">
-                                <div class="fas fa-exclamation-triangle"></div>
-                                Please check your basket
+                                <div className="fas fa-exclamation-triangle"></div>
+                                Please fill in all the fields
+                            </div> : 
+                            <div className="successbanner">
+                                <div className="fas fa-check"></div>
+                                Please upload your proof of payment below
                             </div>
                         }
                         <span>
@@ -55,15 +161,14 @@ export default function Cart() {
                             {currentTotalPrice}
                         </span>
                         {
-                            numItemsInCart > 0 &&
-                            <button style={(cartHasError.length > 0) ?
+                            <button style={hasError ?
                                 {cursor:'not-allowed',opacity:0.5} : {}}
-                                onClick={() => toggleCart(false)}>
-                                <div className="fas fa-ban"></div>
-                                CHECK OUT
+                                onClick={() => uploadReceipt()}>
+                                <div className="fas fa-upload"></div>
+                                PROOF OF PAYMENT
                             </button>
                         }
-                    </footer> */}
+                    </footer>
                 </div>
             </section>
         );

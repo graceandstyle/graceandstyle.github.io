@@ -202,7 +202,7 @@ export default function Cart() {
                         {
                             cartHasError.length > 0 &&
                             <div className="errorbanner">
-                                <div class="fas fa-exclamation-triangle"></div>
+                                <div className="fas fa-exclamation-triangle"></div>
                                 Please check your basket
                             </div>
                         }
@@ -215,7 +215,7 @@ export default function Cart() {
                             <button style={(cartHasError.length > 0) ?
                                 {cursor:'not-allowed',opacity:0.5} : {}}
                                 onClick={() => toggleCheckout(false)}>
-                                <div className="fas fa-ban"></div>
+                                <div className={(cartHasError.length > 0) ? 'fas fa-ban' : 'fas fa-check'}></div>
                                 CHECK OUT
                             </button>
                         }

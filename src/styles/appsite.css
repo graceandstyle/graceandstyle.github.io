@@ -1277,3 +1277,143 @@
   overflow-y: auto;
   padding: 20px 20px 50px 20px;
 }
+
+.checkoutpanel > .checkoutmodal > .body > .innerbody > .notice {
+  position: relative;
+  padding: 10px;
+  padding-right: 30px;
+  background-color: #ccc;
+  border-radius: 5px;
+  font-weight: bold;
+  width: calc(100% - 40px);
+  margin-bottom: 20px;
+}
+
+.checkoutpanel > .checkoutmodal > .body > .innerbody > .field {
+  position: relative;
+  width: calc(100% - 40px);
+  height: auto;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.checkoutpanel > .checkoutmodal > .body > .innerbody > .field > span {
+  font-size: 8pt;
+  font-weight: bold;
+}
+
+.checkoutpanel
+  > .checkoutmodal
+  > .body
+  > .innerbody
+  > .field
+  > input[type="text"] {
+  display: block;
+  width: 100%;
+  font-size: 16pt;
+  border: none;
+  -webkit-appearance: none;
+}
+
+.checkoutpanel > .checkoutmodal > .body > .innerbody > .field > a {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.checkoutpanel > .checkoutmodal > .body > .innerbody > .field > a > img {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.checkoutpanel > .checkoutmodal > footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+}
+
+.checkoutpanel > .checkoutmodal > footer > .errorbanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: #f00;
+  color: #fff;
+  padding: 10px 15px;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.checkoutpanel > .checkoutmodal > footer > .errorbanner > div {
+  margin-right: 10px;
+}
+
+.checkoutpanel > .checkoutmodal > footer > .successbanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: rgb(35, 129, 35);
+  color: #fff;
+  padding: 10px 15px;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.checkoutpanel > .checkoutmodal > footer > .successbanner > div {
+  margin-right: 10px;
+}
+
+.checkoutpanel > .checkoutmodal > footer > span {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.checkoutpanel > .checkoutmodal > footer > span > sup {
+  font-size: 10pt !important;
+  font-weight: bold;
+}
+
+.checkoutpanel > .checkoutmodal > footer > button {
+  background-color: #e6c92a;
+  border: none;
+  -webkit-appearance: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  border: 2px solid #e6c92a;
+}
+
+.checkoutpanel > .checkoutmodal > footer > button > div {
+  margin-right: 10px;
+}

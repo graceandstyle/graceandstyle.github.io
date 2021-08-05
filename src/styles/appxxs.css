@@ -500,4 +500,8 @@
     font-size: 12pt;
     height: 50px;
   }
+
+  .checkoutpanel > .checkoutmodal {
+    width: 100%;
+  }
 }
