@@ -2,7 +2,7 @@ import { useState, useRef, useEffect} from "react";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-export default function useFetch(url) {
+export default function useFetch(url, method, body) {
   const isMountedRef = useRef(false);
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -12,7 +12,11 @@ export default function useFetch(url) {
       isMountedRef.current = true;
         async function init() {
           try {
-            const response = await fetch(baseUrl + url);
+            const response = await fetch(baseUrl + url,
+              {
+                method: method,
+                body: JSON.stringify(body)
+              });
             if(response.ok){
                 const json = await response.json();
                 if(isMountedRef.current) setData(json);
@@ -29,7 +33,7 @@ export default function useFetch(url) {
         return () =>  {
           isMountedRef.current = false;
         }
-      }, [url]);
+      }, [url, method, body]);
 
       return { data, error, loading };
 }

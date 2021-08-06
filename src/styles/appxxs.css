@@ -504,4 +504,31 @@
   .checkoutpanel > .checkoutmodal {
     width: 100%;
   }
+
+  .placeorderpanel > .placeordermodal {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .placeorderpanel > .placeordermodal > .inner > button {
+    position: relative;
+    width: auto;
+    background: none;
+    padding: 10px 20px;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid #e6c92a;
+    color: #fff;
+    background-color: #e6c92a;
+    font-size: 12pt;
+  }
 }

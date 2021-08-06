@@ -483,4 +483,21 @@
     font-size: 12pt;
     height: 50px;
   }
+
+  .placeorderpanel > .placeordermodal > .inner > button {
+    position: relative;
+    width: auto;
+    background: none;
+    padding: 10px 20px;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid #e6c92a;
+    color: #fff;
+    background-color: #e6c92a;
+    font-size: 12pt;
+  }
 }

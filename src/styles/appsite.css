@@ -1421,3 +1421,104 @@
 .checkoutpanel > .checkoutmodal > footer > .upload > input[type="file"] {
   display: none;
 }
+
+.placeorderpanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+.placeorderpanel > .placeordermodal {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 450px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.placeorderpanel > .placeordermodal > .inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width: auto;
+  height: auto;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .success {
+  font-size: 100pt;
+  display: block;
+  color: rgb(35, 129, 35);
+  margin-bottom: 30px;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .error {
+  font-size: 100pt;
+  display: block;
+  color: #f00;
+  margin-bottom: 30px;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .info {
+  font-size: 100pt;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .message {
+  display: block;
+  font-size: 15pt;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .submessage {
+  display: block;
+  font-size: 9pt;
+  margin-bottom: 20px;
+}
+
+.placeorderpanel > .placeordermodal > .inner > button {
+  position: relative;
+  width: auto;
+  background: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid #e6c92a;
+  color: #fff;
+  background-color: #e6c92a;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .socialmediapanel {
+  display: block;
+  font-size: 25pt;
+  position: unset;
+  bottom: unset;
+  left: unset;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .socialmediapanel > a {
+  margin-right: 10px;
+  color: #343434;
+}
+
+.placeorderpanel > .placeordermodal > .inner > .socialmediapanel > a:last-child {
+  margin-right: unset;
+}

@@ -8,10 +8,14 @@ import ShoppingBagIcon from './components/ShoppingBagIcon';
 import SocialMedia from './components/SocialMedia';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import PlaceOrder from './components/PlaceOrder';
 import { useCart } from "./cartContext";
 
 export default function App() {
-  const { loading } = useCart();
+  const { 
+    isOrderPlaced,
+    loading 
+  } = useCart();
 
   if(loading) return <></>;  
   return (
@@ -25,6 +29,9 @@ export default function App() {
       <SocialMedia />
       <Cart />
       <Checkout />
+      {
+        isOrderPlaced && <PlaceOrder />
+      }
     </>
   );
 }

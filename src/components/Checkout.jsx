@@ -10,7 +10,7 @@ const emptyCustomerInfo = {
     address: ""
 };
 
-export default function Cart() {
+export default function Checkout() {
     const {
         cart,
         checkoutIsToggled,
@@ -18,7 +18,8 @@ export default function Cart() {
         cartIsToggledDispatch,
         cartIsVisibleDispatch,
         checkoutIsToggledDispatch,
-        checkoutIsVisibleDispatch
+        checkoutIsVisibleDispatch,
+        isOrderPlacedDispatch
     } = useCart();
 
     const [customerInfo, setCustomerInfo] = useState(emptyCustomerInfo);
@@ -58,12 +59,18 @@ export default function Cart() {
             ...curCustomer,
             [e.target.id]: e.target.value,
             }
-        })
-        console.log(customerInfo);
+        });
     }
 
     function uploadReceipt() {
         fileField.current.click();
+    }
+
+    function HandleChangeFile(event) {
+        const file = event.target.files[0];
+        let formData = new FormData();
+        formData.append('file', file);
+        isOrderPlacedDispatch({type:"toggle", toggle: true });
     }
 
     if(checkoutIsToggled){
@@ -81,9 +88,10 @@ export default function Cart() {
                         <div className="innerbody">
                             <div className="notice">
                                 <ul>
-                                    <li>Please be aware that the following information will be provided to LBC for delivery.</li>
+                                    <li>The following information will be provided to LBC for delivery.</li>
                                     <li>Shipping fee is not included on the total price of the item/s.</li>
                                     <li>Shipping fee will be paid by the customer upon pick-up on the nearest/preferred LBC branch.</li>
+                                    <li>The customer will have to upload the proof of payment below.</li>
                                 </ul>
                             </div>
                             <div className="field">
@@ -170,7 +178,8 @@ export default function Cart() {
                                 onClick={() => uploadReceipt()}>
                                 <div className="fas fa-upload"></div>
                                 PROOF OF PAYMENT
-                                <input type="file" ref={fileField} />
+                                <input type="file" ref={fileField} 
+                                    onChange={(e) => HandleChangeFile(e)} />
                             </div>
                         }
                     </footer>
