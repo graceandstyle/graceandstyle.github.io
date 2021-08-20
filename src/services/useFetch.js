@@ -15,7 +15,7 @@ export default function useFetch(url, method, body) {
             const response = await fetch(baseUrl + url,
               {
                 method: method,
-                body: JSON.stringify(body)
+                body: body
               });
             if(response.ok){
                 const json = await response.json();

@@ -21,6 +21,10 @@ try {
     initialCart = [];
 }
 
+const initialOrderDetails = {
+    customerInfo: null
+};
+
 export function CartProvider(props) {
     const { data: products, error, loading } = useFetch('GraceNStyle/GetProducts', 'get');
 
@@ -42,6 +46,7 @@ export function CartProvider(props) {
     const [currentSizeID, currentSizeIDDispatch] = useReducer(sizeReducer, '');
     const [filteredSize, filteredSizeDispatch] = useReducer(sizeReducer, []);
     const [isOrderPlaced, isOrderPlacedDispatch] = useReducer(checkoutReducer, false);
+    const [orderDetails, orderDetailsDispatch] = useReducer(checkoutReducer, initialOrderDetails);
 
     useEffect(() => localStorage.setItem("cart", JSON.stringify(cart))
     ,[cart]);
@@ -90,6 +95,7 @@ export function CartProvider(props) {
         isOrderPlaced,
         loading,
         productsFinal,
+        orderDetails,
         cartDispatch,
         cartHasErrorDispatch,
         cartIsToggledDispatch,
@@ -107,6 +113,7 @@ export function CartProvider(props) {
         filteredVariationDispatch,
         isOrderPlacedDispatch,
         productDispatch,
+        orderDetailsDispatch,
         setStockDispatch
      };
 

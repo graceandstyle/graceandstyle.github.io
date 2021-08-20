@@ -1,10 +1,15 @@
 import React from 'react';
 import useFetch from '../services/useFetch';
+import { useCart } from "../cartContext";
 const facebookUrl = process.env.REACT_APP_FACEBOOK_PAGE_URL;
 const instagramUrl = process.env.REACT_APP_INSTAGRAM_PAGE_URL;
 
 export default function PlaceOrder() {
-    const { data, error, loading } = useFetch('GraceNStyle/PlaceOrder', 'post');
+    const {
+        orderDetails
+    } = useCart();
+    console.log(orderDetails);
+    const { data, error, loading } = useFetch('GraceNStyle/PlaceOrder', 'post', orderDetails);
 
     return (
         <section className="placeorderpanel">

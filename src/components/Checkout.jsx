@@ -19,7 +19,8 @@ export default function Checkout() {
         cartIsVisibleDispatch,
         checkoutIsToggledDispatch,
         checkoutIsVisibleDispatch,
-        isOrderPlacedDispatch
+        isOrderPlacedDispatch,
+        orderDetailsDispatch
     } = useCart();
 
     const [customerInfo, setCustomerInfo] = useState(emptyCustomerInfo);
@@ -66,11 +67,14 @@ export default function Checkout() {
         fileField.current.click();
     }
 
-    function HandleChangeFile(event) {
+    function handleChangeFile(event) {
         const file = event.target.files[0];
-        let formData = new FormData();
-        formData.append('file', file);
+        const orderDetails = new FormData();
+        orderDetails.append("customerInfo", JSON.stringify(customerInfo));
+        orderDetails.append("cart", JSON.stringify(cart));
+        orderDetails.append("file", file);
         isOrderPlacedDispatch({type:"toggle", toggle: true });
+        orderDetailsDispatch({type:"addorder", orderDetails: orderDetails });
     }
 
     if(checkoutIsToggled){
@@ -179,7 +183,7 @@ export default function Checkout() {
                                 <div className="fas fa-upload"></div>
                                 PROOF OF PAYMENT
                                 <input type="file" ref={fileField} 
-                                    onChange={(e) => HandleChangeFile(e)} />
+                                    onChange={(e) => handleChangeFile(e)} />
                             </div>
                         }
                     </footer>
