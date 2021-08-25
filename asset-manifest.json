@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/app/static/css/main.8c850aa0.chunk.css",
-    "main.js": "/app/static/js/main.d06d140d.chunk.js",
-    "main.js.map": "/app/static/js/main.d06d140d.chunk.js.map",
-    "runtime-main.js": "/app/static/js/runtime-main.b8cbe9b0.js",
-    "runtime-main.js.map": "/app/static/js/runtime-main.b8cbe9b0.js.map",
-    "static/js/2.d9302016.chunk.js": "/app/static/js/2.d9302016.chunk.js",
-    "static/js/2.d9302016.chunk.js.map": "/app/static/js/2.d9302016.chunk.js.map",
-    "static/js/3.fdc17579.chunk.js": "/app/static/js/3.fdc17579.chunk.js",
-    "static/js/3.fdc17579.chunk.js.map": "/app/static/js/3.fdc17579.chunk.js.map",
+    "main.css": "/app/static/css/main.940d1129.chunk.css",
+    "main.js": "/app/static/js/main.12db6791.chunk.js",
+    "main.js.map": "/app/static/js/main.12db6791.chunk.js.map",
+    "runtime-main.js": "/app/static/js/runtime-main.907b9d7d.js",
+    "runtime-main.js.map": "/app/static/js/runtime-main.907b9d7d.js.map",
+    "static/js/2.5bfb8ada.chunk.js": "/app/static/js/2.5bfb8ada.chunk.js",
+    "static/js/2.5bfb8ada.chunk.js.map": "/app/static/js/2.5bfb8ada.chunk.js.map",
+    "static/js/3.7e47f0bf.chunk.js": "/app/static/js/3.7e47f0bf.chunk.js",
+    "static/js/3.7e47f0bf.chunk.js.map": "/app/static/js/3.7e47f0bf.chunk.js.map",
     "index.html": "/app/index.html",
-    "static/css/main.8c850aa0.chunk.css.map": "/app/static/css/main.8c850aa0.chunk.css.map",
-    "static/js/2.d9302016.chunk.js.LICENSE.txt": "/app/static/js/2.d9302016.chunk.js.LICENSE.txt",
+    "static/css/main.940d1129.chunk.css.map": "/app/static/css/main.940d1129.chunk.css.map",
+    "static/js/2.5bfb8ada.chunk.js.LICENSE.txt": "/app/static/js/2.5bfb8ada.chunk.js.LICENSE.txt",
     "static/media/Grace&Style.27ae78d1.png": "/app/static/media/Grace&Style.27ae78d1.png",
-    "static/media/App.css": "/app/static/media/fa-solid-900.a940d584.woff"
+    "static/media/App.css": "/app/static/media/fa-solid-900.a940d584.woff",
+    "static/media/ms-icon-150x150.79c8f2dc.png": "/app/static/media/ms-icon-150x150.79c8f2dc.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b8cbe9b0.js",
-    "static/js/2.d9302016.chunk.js",
-    "static/css/main.8c850aa0.chunk.css",
-    "static/js/main.d06d140d.chunk.js"
+    "static/js/runtime-main.907b9d7d.js",
+    "static/js/2.5bfb8ada.chunk.js",
+    "static/css/main.940d1129.chunk.css",
+    "static/js/main.12db6791.chunk.js"
   ]
 }
