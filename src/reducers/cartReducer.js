@@ -18,9 +18,16 @@ export default function cartReducer(cart, action) {
                 return [...cart, { currentSizeID }];
             }
         }
+        case "empty": {
+            return [];
+        }
         case "remove": {
             const { currentSizeID } = action;
             return cart.filter((i) => i.currentSizeID !== currentSizeID)
+        }
+        case "replace": {
+            const { newCart } = action;
+            return newCart;
         }
         case "subtract": {
             const { currentSizeID } = action;

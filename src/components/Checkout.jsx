@@ -24,6 +24,7 @@ export default function Checkout() {
     } = useCart();
 
     const [customerInfo, setCustomerInfo] = useState(emptyCustomerInfo);
+    const [validImage, setValidImage] = useState(true);
 
     const currentTotalPrice = useMemo(
         () => cart.reduce((total, item) => total + (item.quantity * parseFloat(item.price.replace(/[^0-9]/g, ''))), 0),
@@ -61,20 +62,54 @@ export default function Checkout() {
             [e.target.id]: e.target.value,
             }
         });
+        setValidImage(true);
     }
 
     function uploadReceipt() {
-        fileField.current.click();
+        if(!hasError){
+            fileField.current.click();
+        }
+    }
+
+    function getFileThumbnailByExtension(fileExtension) {
+        switch (fileExtension) {
+            case 'bmp':
+            case 'gif':
+            case 'jpeg':
+            case 'jpg':
+            case 'png':
+            case 'tif':
+            case 'tiff':
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    function validateTotalFileSize(fileSize) {
+        if(fileSize <= 5242880){
+            return true;
+        }
+        return false;
     }
 
     function handleChangeFile(event) {
-        const file = event.target.files[0];
-        const orderDetails = new FormData();
-        orderDetails.append("customerInfo", JSON.stringify(customerInfo));
-        orderDetails.append("cart", JSON.stringify(cart));
-        orderDetails.append("file", file);
-        isOrderPlacedDispatch({type:"toggle", toggle: true });
-        orderDetailsDispatch({type:"addorder", orderDetails: orderDetails });
+        if(!hasError){
+            const file = event.target.files[0];
+    
+            if(getFileThumbnailByExtension(file.name.split('.').pop().toLowerCase()) &&
+                validateTotalFileSize(file.size)){
+                setValidImage(true);
+                const orderDetails = new FormData();
+                orderDetails.append("customerInfo", JSON.stringify(customerInfo));
+                orderDetails.append("cart", JSON.stringify(cart));
+                orderDetails.append("file", file);
+                orderDetailsDispatch({type:"addorder", orderDetails: orderDetails });
+                isOrderPlacedDispatch({type:"toggle", toggle: true });
+            } else {
+                setValidImage(false);
+            }
+        }
     }
 
     if(checkoutIsToggled){
@@ -160,10 +195,12 @@ export default function Checkout() {
                     </div>
                     <footer>
                         {
-                            hasError ?
+                            (hasError || !validImage) ?
                             <div className="errorbanner">
                                 <div className="fas fa-exclamation-triangle"></div>
-                                Please fill in all the fields
+                                { !validImage ? 'Please upload an image less than 5 MB' :
+                                    'Please fill in all the fields'
+                                }
                             </div> : 
                             <div className="successbanner">
                                 <div className="fas fa-check"></div>
@@ -183,7 +220,8 @@ export default function Checkout() {
                                 <div className="fas fa-upload"></div>
                                 PROOF OF PAYMENT
                                 <input type="file" ref={fileField} 
-                                    onChange={(e) => handleChangeFile(e)} />
+                                    onChange={(e) => handleChangeFile(e)}
+                                    onClick={(e) => e.target.value = null} />
                             </div>
                         }
                     </footer>

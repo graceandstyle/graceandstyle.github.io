@@ -4,36 +4,36 @@ const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export default function useFetch(url, method, body) {
   const isMountedRef = useRef(false);
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-      isMountedRef.current = true;
-        async function init() {
-          try {
-            const response = await fetch(baseUrl + url,
-              {
-                method: method,
-                body: body
-              });
-            if(response.ok){
-                const json = await response.json();
-                if(isMountedRef.current) setData(json);
-            } else {
-                throw response;
-            }
-          } catch(e) {
-            if(isMountedRef.current) setError(e);
-          } finally {
-            if(isMountedRef.current) setLoading(false);
-          }
+  useEffect(() => {
+    isMountedRef.current = true;
+    async function init() {
+      try {
+        const response = await fetch(baseUrl + url,
+          {
+            method: method,
+            body: body
+          });
+        if(response.ok){
+            const json = await response.json();
+            if(isMountedRef.current) setData(json);
+        } else {
+            throw response;
         }
-        init();
-        return () =>  {
-          isMountedRef.current = false;
-        }
-      }, [url, method, body]);
+      } catch(e) {
+        if(isMountedRef.current) setError(e);
+      } finally {
+        if(isMountedRef.current) setLoading(false);
+      }
+    }
+    init();
+    return () =>  {
+      isMountedRef.current = false;
+    }
+  }, [url, method, body]);
 
-      return { data, error, loading };
+  return { data, error, loading };
 }

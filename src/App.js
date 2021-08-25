@@ -1,4 +1,5 @@
 import './App.css';
+import Loader from './components/Loader';
 import Logo from './components/Logo';
 import Background from './components/Background';
 import Categories from './components/Categories';
@@ -17,7 +18,11 @@ export default function App() {
     loading 
   } = useCart();
 
-  if(loading) return <></>;  
+  if(loading) return (
+    <>
+      <Loader />
+    </>
+  );  
   return (
     <>
       <Logo />
