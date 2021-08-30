@@ -61,7 +61,6 @@
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 50%;
-  max-width: 150px;
   text-align: center;
   height: auto;
 }
@@ -72,6 +71,7 @@
   margin: auto;
   width: 100%;
   margin-bottom: 10px;
+  max-width: 150px;
 }
 
 .loaderdiv > .loadercontainer > div {
